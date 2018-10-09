@@ -43,6 +43,7 @@ namespace ThePost_it
             SetColor(DEFAULT_COLOR);
             this.tb.Multiline = true;
             this.tb.Location = new Point(MARGIN_SIZE, MARGIN_SIZE);
+            LockFocus();
         }
 
         public void Display()
@@ -67,6 +68,16 @@ namespace ThePost_it
         {
             this.model.SetText(this.tb.Text);
             Console.WriteLine(this.model);
+        }
+
+        public void LockFocus()
+        {
+            this.Enabled = false;
+        }
+
+        public void UnLockFocus()
+        {
+            this.Enabled = true;
         }
     }
 }

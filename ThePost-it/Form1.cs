@@ -17,19 +17,19 @@ namespace ThePost_it
             InitializeComponent();
         }
 
-        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
         private void cursorButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.panelDisigner.SetMode(false);
         }
 
-        private void itButton_CheckedChanged(object sender, EventArgs e)
+        private void ItButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            this.panelDisigner.SetMode(true);
         }
     }
 }

@@ -62,7 +62,7 @@
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
-            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.QuitterToolStripMenuItem_Click);
             // 
             // panel
             // 
@@ -86,7 +86,7 @@
             this.itButton.TabIndex = 3;
             this.itButton.TabStop = true;
             this.itButton.UseVisualStyleBackColor = false;
-            this.itButton.CheckedChanged += new System.EventHandler(this.itButton_CheckedChanged);
+            this.itButton.CheckedChanged += new System.EventHandler(this.ItButton_CheckedChanged);
             // 
             // cursorButton
             // 

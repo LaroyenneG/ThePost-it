@@ -23,14 +23,13 @@ namespace ThePost_it
 
         public Post_it() : this(0, 0, "")
         {
-
+         
         }
 
         public Post_it(int x, int y) : this(x, y, "")
         {
 
         }
-
 
         public void SetText(string text)
         {
