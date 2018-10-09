@@ -13,6 +13,8 @@ namespace ThePost_it
 
         private Point mousePosition;
 
+        private bool isSelected;
+
         private TextBox tb;
 
         private const int MARGIN_SIZE = 15;
@@ -34,6 +36,8 @@ namespace ThePost_it
             this.MouseUp += new MouseEventHandler(ActionMouseUp);
             this.MouseMove += new MouseEventHandler(ActionMouseMove);
             this.Controls.Add(tb);
+
+            isSelected = false;
 
             Display();
         }
@@ -80,13 +84,15 @@ namespace ThePost_it
                 this.Location = new Point(this.Location.X + e.X, this.Location.Y + e.Y);
             }
 
-
             mousePosition = e.Location;
         }
 
         public void ActionMouseUp(Object sender, MouseEventArgs e)
         {
-            Deseleted();
+            if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+            {
+                Deseleted();
+            }
         }
 
         public void ActionMouseDown(Object sender, MouseEventArgs e)
@@ -101,11 +107,13 @@ namespace ThePost_it
 
         public void Selected()
         {
+            this.isSelected = true;
             this.BackColor = Color.Gold;
         }
 
         public void Deseleted()
         {
+            this.isSelected = false;
             this.BackColor = DEFAULT_COLOR;
         }
 
@@ -117,6 +125,11 @@ namespace ThePost_it
         public void UnLockFocus()
         {
             this.Enabled = true;
+        }
+
+        public bool IsSelect()
+        {
+            return isSelected;
         }
     }
 }

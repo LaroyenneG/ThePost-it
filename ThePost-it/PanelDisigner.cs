@@ -32,7 +32,7 @@ namespace ThePost_it
 
         private void LockPost_It()
         {
-            foreach(DesignPost_It d in listDesign)
+            foreach (DesignPost_It d in listDesign)
             {
                 d.LockFocus();
             }
@@ -64,12 +64,33 @@ namespace ThePost_it
             {
                 AddPost_It(new Post_it(e.Location.X, e.Location.Y));
             }
+            else
+            {
+                foreach (DesignPost_It d in listDesign)
+                {
+                    d.Deseleted();
+                }
+            }
         }
+
+
+        public void supprime()
+        {
+            foreach (DesignPost_It d in listDesign)
+            {
+                if (d.IsSelect())
+                {
+                    this.Controls.Remove(d);
+                }
+            }
+        }
+
+
 
         public void SetMode(bool mode)
         {
 
-            if(mode)
+            if (mode)
             {
                 LockPost_It();
             }

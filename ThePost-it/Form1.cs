@@ -31,5 +31,10 @@ namespace ThePost_it
         {
             this.panelDisigner.SetMode(true);
         }
+
+        private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.panelDisigner.supprime();
+        }
     }
 }
