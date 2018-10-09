@@ -11,15 +11,24 @@ namespace ThePost_it
 
         private int x;
         private int y;
-  
+
         private string text;
 
-
-        public Post_it()
+        public Post_it(int x, int y, string text)
         {
-            x = 0;
-            y = 0;
-            text = "";
+            this.x = x;
+            this.y = y;
+            this.text = text;
+        }
+
+        public Post_it() : this(0, 0, "")
+        {
+
+        }
+
+        public Post_it(int x, int y) : this(x, y, "")
+        {
+
         }
 
 
@@ -28,7 +37,7 @@ namespace ThePost_it
             this.text = text;
         }
 
-       public string GetText()
+        public string GetText()
         {
             return text;
         }
@@ -36,7 +45,7 @@ namespace ThePost_it
         public void SetX(int x)
         {
             this.x = x;
-        }       
+        }
 
         public void SetY(int y)
         {
@@ -51,6 +60,17 @@ namespace ThePost_it
         public int GetY()
         {
             return this.y;
+        }
+
+        public override string ToString()
+        {
+
+            string s = "Post-it :\n";
+            s += "X=" + this.x + "\n";
+            s += "Y=" + this.y + "\n";
+            s += "Text=" + this.text + "\n";
+
+            return s;
         }
     }
 }
