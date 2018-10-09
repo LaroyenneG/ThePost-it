@@ -12,7 +12,7 @@ namespace ThePost_it
     {
         TextBox tb;
 
-        private const int MARGIN_SIZE = 5;
+        private const int MARGIN_SIZE = 15;
         private static Color DEFAULT_COLOR = Color.Yellow;
         private static Size POST_SIZE = new Size(200, 200);
 
