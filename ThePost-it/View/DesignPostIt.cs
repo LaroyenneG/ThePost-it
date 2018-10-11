@@ -8,12 +8,9 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    class DesignPostIt : Panel
+    public class DesignPostIt : Panel
     {
-
-        private Point mousePosition;
-
-        private bool isSelected;
+        private int idModel;
 
         private TextBox tb;
 
@@ -21,25 +18,15 @@ namespace ThePost_it
         private static Color DEFAULT_COLOR = Color.Yellow;
         private static Size POST_SIZE = new Size(300, 300);
 
-        private Post_it model;
-
-        public DesignPostIt(Post_it model)
+        public DesignPostIt(PostIt p)
         {
+            idModel = p.GetID();
 
             InitializeComponent();
 
-            mousePosition = new Point(0, 0);
-
-            this.model = model;
-            this.tb.TextChanged += new EventHandler(ActionTextChanged);
-            this.MouseDown += new MouseEventHandler(ActionMouseDown);
-            this.MouseUp += new MouseEventHandler(ActionMouseUp);
-            this.MouseMove += new MouseEventHandler(ActionMouseMove);
             this.Controls.Add(tb);
 
-            isSelected = false;
-
-            Display();
+            Display(p);
         }
 
 
@@ -59,70 +46,38 @@ namespace ThePost_it
             LockFocus();
         }
 
-        public void Display()
+        public void Display(PostIt postIt)
         {
-            this.tb.Text = this.model.GetText();
-            this.Location = new Point(this.model.GetX(), this.model.GetY());
-        }
-
-        public void SetColor(Color color)
-        {
-            this.BackColor = color;
-            this.tb.BackColor = color;
-        }
-
-        public Color GetColor()
-        {
-            return this.tb.BackColor;
-        }
-
-
-        public void ActionMouseMove(Object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
+            if (postIt.GetText() != this.tb.Text)
             {
-                int x = this.Location.X;
-                int y = this.Location.Y;
-
-                int dx = e.X;
-                int dy = e.Y;
-
-                int nx = x + dx;
-                int ny = y + dy;
-
-                this.Location = new Point(nx < 0 ? 0 : nx, ny < 0 ? 0 : ny);
+                this.tb.Text = postIt.GetText();
             }
 
-            mousePosition = e.Location;
-        }
+            this.Location = new Point(postIt.GetX(), postIt.GetY());
 
-        public void ActionMouseUp(Object sender, MouseEventArgs e)
-        {
-            if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+            if(postIt.IsSelected())
+            {
+                Selected();
+            }
+            else
             {
                 Deseleted();
             }
         }
 
-        public void ActionMouseDown(Object sender, MouseEventArgs e)
+        private void SetColor(Color color)
         {
-            Selected();
-        }
-
-        public void ActionTextChanged(object sender, EventArgs e)
-        {
-            this.model.SetText(this.tb.Text);
+            this.BackColor = color;
+            this.tb.BackColor = color;
         }
 
         public void Selected()
         {
-            this.isSelected = true;
             this.BackColor = Color.Gold;
         }
 
         public void Deseleted()
         {
-            this.isSelected = false;
             this.BackColor = DEFAULT_COLOR;
         }
 
@@ -136,9 +91,22 @@ namespace ThePost_it
             this.Enabled = true;
         }
 
-        public bool IsSelect()
+        public void SetControler(MyControler controler)
         {
-            return isSelected;
+            this.tb.TextChanged += new EventHandler(controler.ActionEvent);
+            this.MouseDown += new MouseEventHandler(controler.ActionMouseDown);
+            this.MouseUp += new MouseEventHandler(controler.ActionMouseUp);
+            this.MouseMove += new MouseEventHandler(controler.ActionMouseMove);
+        }
+
+        public bool Correspond(PostIt p)
+        {
+            return p.GetID() == idModel;
+        }
+
+        public int GetID()
+        {
+            return idModel;
         }
     }
 }

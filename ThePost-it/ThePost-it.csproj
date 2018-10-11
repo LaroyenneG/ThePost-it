@@ -45,9 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controler\DesignerControler.cs" />
+    <Compile Include="Controler\MyControler.cs" />
     <Compile Include="Controler\ControlGroup.cs" />
+    <Compile Include="Controler\DesignPostItControler.cs" />
+    <Compile Include="Controler\MenuControler.cs" />
     <Compile Include="Model\Model.cs" />
-    <Compile Include="View\DesignPost-It.cs">
+    <Compile Include="View\DesignPostIt.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\PostitEditor.cs">
@@ -56,10 +60,10 @@
     <Compile Include="View\PostitEditor.Designer.cs">
       <DependentUpon>PostitEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PanelDisigner.cs">
+    <Compile Include="View\PanelDesigner.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model\Post-it.cs" />
+    <Compile Include="Model\PostIt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\PostitEditor.resx">

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace ThePost_it
 {
-    class ControlGroup
+    public class ControlGroup
     {
-        public ControlGroup(PostitEditor postitEditor, Model model)
+        public ControlGroup(Model model, PostitEditor postitEditor)
         {
-
+            postitEditor.SetMenuControler(new MenuControler(model, postitEditor));
+            postitEditor.SetDesignerControler(new DesignerControler(model, postitEditor));
         }
     }
 }

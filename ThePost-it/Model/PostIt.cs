@@ -6,27 +6,35 @@ using System.Threading.Tasks;
 
 namespace ThePost_it
 {
-    class Post_it
+    public class PostIt
     {
+        private static int counter = 0;
+
+        private static readonly object mutex = new object();
 
         private int x;
         private int y;
+        private int id;
 
         private string text;
 
-        public Post_it(int x, int y, string text)
+        private bool selected;
+
+        public PostIt(int x, int y, string text)
         {
+            this.id = BuildID();
             this.x = x;
             this.y = y;
             this.text = text;
+            this.selected = false;
         }
 
-        public Post_it() : this(0, 0, "")
+        public PostIt() : this(0, 0, "")
         {
-         
+
         }
 
-        public Post_it(int x, int y) : this(x, y, "")
+        public PostIt(int x, int y) : this(x, y, "")
         {
 
         }
@@ -61,6 +69,23 @@ namespace ThePost_it
             return this.y;
         }
 
+        public int BuildID()
+        {
+            int value;
+
+            lock (mutex)
+            {
+                value = counter++;
+            }
+
+            return value;
+        }
+
+        public int GetID()
+        {
+            return id;
+        }
+
         public override string ToString()
         {
 
@@ -70,6 +95,23 @@ namespace ThePost_it
             s += "Text=" + this.text + "\n";
 
             return s;
+        }
+
+        public bool IsSelected()
+        {
+            return selected;
+        }
+
+        public void SetSelect(bool b)
+        {
+            selected = b;
+        }
+
+
+        public void Translate(int dx, int dy)
+        {
+            x += (x + dx >= 0) ? dx : 0;
+            y += (y + dy >= 0) ? dy : 0;
         }
     }
 }

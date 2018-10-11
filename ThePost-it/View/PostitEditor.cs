@@ -12,29 +12,33 @@ namespace ThePost_it
 {
     public partial class PostitEditor : Form
     {
+
         public PostitEditor()
         {
             InitializeComponent();
         }
 
-        private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
+        public void SetMenuControler(MyControler controler) 
         {
-            Application.Exit();
+            this.quitterToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
+            this.supprimerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
+            this.postItButton.Click += new EventHandler(controler.ActionEvent);
+            this.cursorButton.Click += new EventHandler(controler.ActionEvent);
         }
 
-        private void CursorButton_CheckedChanged(object sender, EventArgs e)
+        public void SetDesignerControler(MyControler controler)
         {
-            this.panelDisigner.SetMode(false);
+            this.panelDesigner.SetControler(controler);
         }
 
-        private void ItButton_CheckedChanged(object sender, EventArgs e)
+        public bool CursorButtonIsChecked()
         {
-            this.panelDisigner.SetMode(true);
+            return this.cursorButton.Checked;
         }
 
-        private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        public bool PostItButtonIsChecked()
         {
-            this.panelDisigner.supprime();
+            return this.postItButton.Checked;
         }
     }
 }

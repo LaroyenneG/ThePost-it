@@ -19,7 +19,7 @@ namespace ThePost_it
 
             Model model = new Model();
             PostitEditor postitEditor = new PostitEditor();
-            ControlGroup group = new ControlGroup(postitEditor, model);
+            ControlGroup group = new ControlGroup(model, postitEditor);
 
             Application.Run(postitEditor);
         }
