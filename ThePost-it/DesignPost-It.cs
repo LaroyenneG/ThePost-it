@@ -13,9 +13,12 @@ namespace ThePost_it
 
         private Point mousePosition;
 
+        private bool isSelected;
+
         private TextBox tb;
 
         private const int MARGIN_SIZE = 15;
+        private static Color DEFAULT_COLOR = Color.Yellow;
         private static Size POST_SIZE = new Size(200, 200);
 
         private Post_it model;
@@ -34,7 +37,7 @@ namespace ThePost_it
             this.MouseMove += new MouseEventHandler(ActionMouseMove);
             this.Controls.Add(tb);
 
-            SetColor(this.model.GetColor());
+            isSelected = false;
 
             Display();
         }
@@ -50,6 +53,7 @@ namespace ThePost_it
             this.tb.Size = new Size(POST_SIZE.Width - MARGIN_SIZE * 2, POST_SIZE.Height - MARGIN_SIZE * 2);
             this.tb.BorderStyle = BorderStyle.None;
             this.BorderStyle = BorderStyle.None;
+            SetColor(DEFAULT_COLOR);
             this.tb.Multiline = true;
             this.tb.Location = new Point(MARGIN_SIZE, MARGIN_SIZE);
             LockFocus();
@@ -65,6 +69,11 @@ namespace ThePost_it
         {
             this.BackColor = color;
             this.tb.BackColor = color;
+        }
+
+        public Color GetColor()
+        {
+            return this.tb.BackColor;
         }
 
 
@@ -98,11 +107,13 @@ namespace ThePost_it
 
         public void Selected()
         {
+            this.isSelected = true;
             this.BackColor = Color.Gold;
         }
 
         public void Deseleted()
         {
+            this.isSelected = false;
             this.BackColor = DEFAULT_COLOR;
         }
 
@@ -114,6 +125,11 @@ namespace ThePost_it
         public void UnLockFocus()
         {
             this.Enabled = true;
+        }
+
+        public bool IsSelect()
+        {
+            return isSelected;
         }
     }
 }
