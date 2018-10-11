@@ -11,19 +11,19 @@ namespace ThePost_it
         private bool mode; // false = selection ; true = create
 
         private List<Post_it> listPostit;
-        private List<DesignPost_It> listDesign;
+        private List<DesignPostIt> listDesign;
 
         public PanelDisigner()
         {
             mode = false;
             listPostit = new List<Post_it>();
-            listDesign = new List<DesignPost_It>();
+            listDesign = new List<DesignPostIt>();
             this.MouseClick += new MouseEventHandler(ActionMouseClick);
         }
 
         private void AddPost_It(Post_it p)
         {
-            DesignPost_It design = new DesignPost_It(p);
+            DesignPostIt design = new DesignPostIt(p);
             this.Controls.Add(design);
             this.Controls.SetChildIndex(design, 0);
             listPostit.Add(p);
@@ -32,7 +32,7 @@ namespace ThePost_it
 
         private void LockPost_It()
         {
-            foreach (DesignPost_It d in listDesign)
+            foreach (DesignPostIt d in listDesign)
             {
                 d.LockFocus();
             }
@@ -40,7 +40,7 @@ namespace ThePost_it
 
         private void UnLockPost_It()
         {
-            foreach (DesignPost_It d in listDesign)
+            foreach (DesignPostIt d in listDesign)
             {
                 d.UnLockFocus();
             }
@@ -65,7 +65,7 @@ namespace ThePost_it
             }
             else
             {
-                foreach (DesignPost_It d in listDesign)
+                foreach (DesignPostIt d in listDesign)
                 {
                     d.Deseleted();
                 }
@@ -75,7 +75,7 @@ namespace ThePost_it
 
         public void supprime()
         {
-            foreach (DesignPost_It d in listDesign)
+            foreach (DesignPostIt d in listDesign)
             {
                 if (d.IsSelect())
                 {

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    class DesignPost_It : Panel
+    class DesignPostIt : Panel
     {
 
         private Point mousePosition;
@@ -23,7 +23,7 @@ namespace ThePost_it
 
         private Post_it model;
 
-        public DesignPost_It(Post_it model)
+        public DesignPostIt(Post_it model)
         {
 
             InitializeComponent();
