@@ -19,7 +19,7 @@ namespace ThePost_it
 
         private const int MARGIN_SIZE = 15;
         private static Color DEFAULT_COLOR = Color.Yellow;
-        private static Size POST_SIZE = new Size(200, 200);
+        private static Size POST_SIZE = new Size(300, 300);
 
         private Post_it model;
 
@@ -81,7 +81,16 @@ namespace ThePost_it
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.Location = new Point(this.Location.X + e.X, this.Location.Y + e.Y);
+                int x = this.Location.X;
+                int y = this.Location.Y;
+
+                int dx = e.X;
+                int dy = e.Y;
+
+                int nx = x + dx;
+                int ny = y + dy;
+
+                this.Location = new Point(nx < 0 ? 0 : nx, ny < 0 ? 0 : ny);
             }
 
             mousePosition = e.Location;

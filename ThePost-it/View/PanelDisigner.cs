@@ -49,7 +49,6 @@ namespace ThePost_it
 
         public void LoadModel()
         {
-
             this.Controls.Clear();
 
             foreach (Post_it p in listPostit)

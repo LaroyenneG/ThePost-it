@@ -45,23 +45,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DesignPost-It.cs">
+    <Compile Include="Controler\ControlGroup.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="View\DesignPost-It.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="View\PostitEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\PostitEditor.Designer.cs">
+      <DependentUpon>PostitEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="PanelDisigner.cs">
+    <Compile Include="View\PanelDisigner.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Post-it.cs" />
+    <Compile Include="Model\Post-it.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\PostitEditor.resx">
+      <DependentUpon>PostitEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

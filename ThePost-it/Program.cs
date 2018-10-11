@@ -16,7 +16,12 @@ namespace ThePost_it
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Model model = new Model();
+            PostitEditor postitEditor = new PostitEditor();
+            ControlGroup group = new ControlGroup(postitEditor, model);
+
+            Application.Run(postitEditor);
         }
     }
 }

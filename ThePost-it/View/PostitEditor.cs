@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    public partial class Form1 : Form
+    public partial class PostitEditor : Form
     {
-        public Form1()
+        public PostitEditor()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace ThePost_it
             Application.Exit();
         }
 
-        private void cursorButton_CheckedChanged(object sender, EventArgs e)
+        private void CursorButton_CheckedChanged(object sender, EventArgs e)
         {
             this.panelDisigner.SetMode(false);
         }
@@ -32,7 +32,7 @@ namespace ThePost_it
             this.panelDisigner.SetMode(true);
         }
 
-        private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.panelDisigner.supprime();
         }
