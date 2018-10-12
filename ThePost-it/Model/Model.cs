@@ -21,7 +21,7 @@ namespace ThePost_it
         {
             PostIt p = new PostIt(x, y);
 
-            listPostit.Add(p);
+            listPostit.Insert(0, p);
 
             return p;
         }
@@ -29,9 +29,9 @@ namespace ThePost_it
         public PostIt GetPostItByID(int id)
         {
 
-            foreach(PostIt p in listPostit)
+            foreach (PostIt p in listPostit)
             {
-                if(p.GetID()==id)
+                if (p.GetID() == id)
                 {
                     return p;
                 }
@@ -42,10 +42,16 @@ namespace ThePost_it
 
         public void DeleteSelectedPostIts()
         {
-            listPostit.RemoveAll(delegate (PostIt p) {
+            listPostit.RemoveAll(delegate (PostIt p)
+            {
                 return p.IsSelected();
             });
-        } 
+        }
+
+        public int GetIndex(PostIt p)
+        {
+            return listPostit.IndexOf(p);
+        }
 
         public void UnselectAll()
         {
@@ -58,6 +64,15 @@ namespace ThePost_it
         public List<PostIt> GetPostItList()
         {
             return listPostit;
+        }
+
+
+        public void PopUpPostIt(PostIt p)
+        {
+            if (listPostit.Remove(p))
+            {
+                listPostit.Insert(0, p);
+            }
         }
     }
 }

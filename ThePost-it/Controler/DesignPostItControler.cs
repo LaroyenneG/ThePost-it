@@ -10,7 +10,7 @@ namespace ThePost_it
 {
     public class DesignPostItControler : MyControler
     {
-
+    
         private int idModel;
         private Point mousePosition;
 
@@ -22,15 +22,16 @@ namespace ThePost_it
 
         public override void ActionEvent(object sender, EventArgs e)
         {
-
-
-            TextBox textBox = (TextBox)sender;
-
-            PostIt p = model.GetPostItByID(idModel);
-
-            if (p != null)
+            if(sender.GetType()==typeof(TextBox))
             {
-                p.SetText(textBox.Text);
+                TextBox textBox = (TextBox)sender;
+
+                PostIt p = model.GetPostItByID(idModel);
+
+                if (p != null)
+                {
+                    p.SetText(textBox.Text);
+                }
             }
         }
 
@@ -79,6 +80,7 @@ namespace ThePost_it
                 }
 
                 p.SetSelect(true);
+                model.PopUpPostIt(p);
             }
 
             mousePosition = e.Location;

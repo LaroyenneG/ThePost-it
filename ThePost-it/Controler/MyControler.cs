@@ -30,6 +30,7 @@ namespace ThePost_it
                 if(p!=null)
                 {
                     d.Display(p);
+                    view.panelDesigner.Controls.SetChildIndex(d, model.GetIndex(p));
                 }
                 else
                 {
@@ -54,7 +55,6 @@ namespace ThePost_it
 
                 if(!find)
                 {
-                    //DesignPostItControler designerControler = ;
                     view.panelDesigner.CreateNewPostItDesigner(p, new DesignPostItControler(model, view, p.GetID()));
                 }
             }
