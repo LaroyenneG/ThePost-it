@@ -22,8 +22,6 @@ namespace ThePost_it
         {
             this.quitterToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
             this.supprimerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
-            this.postItButton.Click += new EventHandler(controler.ActionEvent);
-            this.cursorButton.Click += new EventHandler(controler.ActionEvent);
         }
 
         public void SetDesignerControler(MyControler controler)

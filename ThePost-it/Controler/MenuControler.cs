@@ -17,30 +17,27 @@ namespace ThePost_it
 
         public override void ActionEvent(object sender, EventArgs e)
         {
-            Control control = (Control) sender;
 
-            switch (control.Name)
+            if(sender.GetType()==typeof(ToolStripMenuItem))
             {
-                case "Quiter" :
-                    QuitterToolStripMenuItem_Click(sender, e);
-                    break;
+                ToolStripMenuItem item = (ToolStripMenuItem)sender;
 
-                case "Supprimer" :
-                    SupprimerToolStripMenuItem_Click(sender, e);
-                    break;
+                switch (item.Name)
+                {
+                    case "quitterToolStripMenuItem":
+                        QuitterToolStripMenuItem_Click(sender, e);
+                        break;
 
-                case "cursorButton":
-                    CursorButton_CheckedChanged(sender, e);
-                    break;
+                    case "supprimerToolStripMenuItem":
+                        SupprimerToolStripMenuItem_Click(sender, e);
+                        break;
 
-                case "postItButton":
-                    ItButton_CheckedChanged(sender, e);
-                    break;
-
-                default :
-                    Console.WriteLine("Error unknow name : " + control.Name);
-                    break;
+                    default:
+                        Console.WriteLine("Error unknow name : " + item.Name);
+                        break;
+                }
             }
+            
 
             UpdateView();
         }
@@ -48,16 +45,6 @@ namespace ThePost_it
         private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void CursorButton_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void ItButton_CheckedChanged(object sender, EventArgs e)
-        {
-           
         }
 
         private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
