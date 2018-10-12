@@ -47,11 +47,7 @@ namespace ThePost_it
                     int dy = e.Y - mousePosition.Y;
 
                     p.Translate(dx, dy);
-
-                    Console.WriteLine("dx="+dx+"dy="+dy);
                 }
-
-                mousePosition = e.Location;
             }
 
             UpdateView();
@@ -77,8 +73,15 @@ namespace ThePost_it
 
             if (p != null)
             {
+                if((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                {
+                    model.UnselectAll();
+                }
+
                 p.SetSelect(true);
             }
+
+            mousePosition = e.Location;
 
             UpdateView();
         }
