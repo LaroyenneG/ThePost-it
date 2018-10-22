@@ -64,7 +64,8 @@
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
             // 
             // editionToolStripMenuItem
@@ -77,8 +78,10 @@
             // 
             // supprimerToolStripMenuItem
             // 
+            this.supprimerToolStripMenuItem.Enabled = false;
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.supprimerToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             // 
             // panelMode
@@ -147,16 +150,17 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.MenuStrip menu;
-        public System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
-        public System.Windows.Forms.Panel panelMode;
-        public System.Windows.Forms.RadioButton cursorButton;
-        public System.Windows.Forms.RadioButton postItButton;
+      
         public PanelDesigner panelDesigner;
-        public System.Windows.Forms.ToolStripMenuItem editionToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+        private System.Windows.Forms.Panel panelMode;
+        private System.Windows.Forms.RadioButton cursorButton;
+        private System.Windows.Forms.RadioButton postItButton;
+        private System.Windows.Forms.ToolStripMenuItem editionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
     }
 }
 

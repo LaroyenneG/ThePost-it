@@ -24,11 +24,11 @@ namespace ThePost_it
 
                 switch (item.Name)
                 {
-                    case "quitterToolStripMenuItem":
+                    case Constant.NAME_ITEM_QUITTER:
                         QuitterToolStripMenuItem_Click(sender, e);
                         break;
 
-                    case "supprimerToolStripMenuItem":
+                    case Constant.NAME_ITEM_SUPPRIMER:
                         SupprimerToolStripMenuItem_Click(sender, e);
                         break;
 
@@ -51,5 +51,6 @@ namespace ThePost_it
         {
             model.DeleteSelectedPostIts();
         }
+
     }
 }
