@@ -47,11 +47,15 @@
   <ItemGroup>
     <Compile Include="Constant.cs" />
     <Compile Include="Controler\DesignerControler.cs" />
+    <Compile Include="Controler\History\IMemento.cs" />
+    <Compile Include="Controler\History\Memento.cs" />
     <Compile Include="Controler\MyControler.cs" />
     <Compile Include="Controler\ControlGroup.cs" />
     <Compile Include="Controler\DesignPostItControler.cs" />
     <Compile Include="Controler\MenuControler.cs" />
+    <Compile Include="Controler\History\UndoRedoHistory.cs" />
     <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Postit.cs" />
     <Compile Include="View\DesignPostIt.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -63,9 +67,6 @@
     </Compile>
     <Compile Include="View\PanelDesigner.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="E:\Documents\ENSISA\2eme année\Interface Homme-Machine\PostIt.cs">
-      <Link>Model\PostIt.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

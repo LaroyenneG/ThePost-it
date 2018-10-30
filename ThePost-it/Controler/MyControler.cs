@@ -10,6 +10,7 @@ namespace ThePost_it
     public abstract class MyControler
     {
 
+        private static UndoRedoHistory history = new UndoRedoHistory();
         protected Model model;
         protected PostitEditor view;
 
@@ -24,10 +25,10 @@ namespace ThePost_it
 
             List<DesignPostIt> removeList = new List<DesignPostIt>();
 
-            foreach(DesignPostIt d in view.panelDesigner.GetDesignPostItList())
+            foreach (DesignPostIt d in view.panelDesigner.GetDesignPostItList())
             {
                 PostIt p = model.GetPostItByID(d.GetID());
-                if(p!=null)
+                if (p != null)
                 {
                     d.Display(p);
                     view.panelDesigner.Controls.SetChildIndex(d, model.GetIndex(p));
@@ -41,22 +42,49 @@ namespace ThePost_it
             view.panelDesigner.RemoveAll(removeList);
 
 
-            foreach(PostIt p in model.GetPostItList())
+            foreach (PostIt p in model.GetPostItList())
             {
                 bool find = false;
 
                 foreach (DesignPostIt d in view.panelDesigner.GetDesignPostItList())
                 {
-                    if(d.Correspond(p)) {
+                    if (d.Correspond(p))
+                    {
                         find = true;
                         break;
                     }
                 }
 
-                if(!find)
+                if (!find)
                 {
                     view.panelDesigner.CreateNewPostItDesigner(p, new DesignPostItControler(model, view, p.GetID()));
                 }
+            }
+
+
+            view.SetOnePostItIsSelected(model.OnePostItIsSelected());
+            view.SetCanUndo(history.CanUndo);
+            view.SetCanRedo(history.CanRedo);
+        }
+
+        protected void SaveModel()
+        {
+            history.Do(new Memento(model));
+        }
+
+        protected void RestoreModel()
+        {
+            if (history.CanRedo)
+            {
+                history.Redo();
+            }
+        }
+
+        protected void CancelModel()
+        {
+            if (history.CanUndo)
+            {
+                history.Undo();
             }
         }
 

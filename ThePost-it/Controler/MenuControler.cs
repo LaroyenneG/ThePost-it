@@ -10,6 +10,7 @@ namespace ThePost_it
 
     class MenuControler : MyControler
     {
+
         public MenuControler(Model model, PostitEditor view) : base(model, view)
         {
 
@@ -18,7 +19,7 @@ namespace ThePost_it
         public override void ActionEvent(object sender, EventArgs e)
         {
 
-            if(sender.GetType()==typeof(ToolStripMenuItem))
+            if (sender.GetType() == typeof(ToolStripMenuItem))
             {
                 ToolStripMenuItem item = (ToolStripMenuItem)sender;
 
@@ -32,14 +33,33 @@ namespace ThePost_it
                         SupprimerToolStripMenuItem_Click(sender, e);
                         break;
 
+                    case "annulerToolStripMenuItem":
+                        AnnulerToolStripMenuItem_Click(sender, e);
+                        break;
+
+                    case "retablirToolStripMenuItem":
+                        RetablirToolStripMenuItem_Click(sender, e);
+                        break;
+
                     default:
                         Console.WriteLine("Error unknow name : " + item.Name);
                         break;
                 }
             }
-            
+
 
             UpdateView();
+        }
+
+
+        private void AnnulerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CancelModel();
+        }
+
+        private void RetablirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RestoreModel();
         }
 
         private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +70,8 @@ namespace ThePost_it
         private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             model.DeleteSelectedPostIts();
-        }
 
+            SaveModel();
+        }
     }
 }

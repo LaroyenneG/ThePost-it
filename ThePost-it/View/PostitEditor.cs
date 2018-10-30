@@ -18,10 +18,12 @@ namespace ThePost_it
             InitializeComponent();
         }
 
-        public void SetMenuControler(MyControler controler) 
+        public void SetMenuControler(MyControler controler)
         {
             this.quitterToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
             this.supprimerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
+            this.annulerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
+            this.retablirToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
         }
 
         public void SetDesignerControler(MyControler controler)
@@ -37,6 +39,21 @@ namespace ThePost_it
         public bool PostItButtonIsChecked()
         {
             return this.postItButton.Checked;
+        }
+
+        internal void SetOnePostItIsSelected(bool v)
+        {
+            this.supprimerToolStripMenuItem.Enabled = v;
+        }
+
+        internal void SetCanUndo(bool canUndo)
+        {
+            this.annulerToolStripMenuItem.Enabled = canUndo;
+        }
+
+        internal void SetCanRedo(bool canRedo)
+        {
+            this.retablirToolStripMenuItem.Enabled = canRedo;
         }
     }
 }

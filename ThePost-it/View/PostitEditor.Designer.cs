@@ -34,6 +34,8 @@
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.annulerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retablirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMode = new System.Windows.Forms.Panel();
             this.postItButton = new System.Windows.Forms.RadioButton();
             this.cursorButton = new System.Windows.Forms.RadioButton();
@@ -71,7 +73,9 @@
             // editionToolStripMenuItem
             // 
             this.editionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.supprimerToolStripMenuItem});
+            this.supprimerToolStripMenuItem,
+            this.annulerToolStripMenuItem,
+            this.retablirToolStripMenuItem});
             this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
             this.editionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.editionToolStripMenuItem.Text = "Edition";
@@ -81,8 +85,24 @@
             this.supprimerToolStripMenuItem.Enabled = false;
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
             this.supprimerToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
+            // 
+            // annulerToolStripMenuItem
+            // 
+            this.annulerToolStripMenuItem.Enabled = false;
+            this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
+            this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.annulerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.annulerToolStripMenuItem.Text = "Annuler";
+            // 
+            // retablirToolStripMenuItem
+            // 
+            this.retablirToolStripMenuItem.Enabled = false;
+            this.retablirToolStripMenuItem.Name = "retablirToolStripMenuItem";
+            this.retablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.retablirToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.retablirToolStripMenuItem.Text = "Rétablir";
             // 
             // panelMode
             // 
@@ -161,6 +181,8 @@
         private System.Windows.Forms.RadioButton postItButton;
         private System.Windows.Forms.ToolStripMenuItem editionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem annulerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem retablirToolStripMenuItem;
     }
 }
 

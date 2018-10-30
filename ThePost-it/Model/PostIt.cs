@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ThePost_it
 {
-    public class PostIt
+    public class PostIt : ICloneable
     {
         private static int counter = 0;
 
@@ -29,7 +29,7 @@ namespace ThePost_it
             this.selected = false;
         }
 
-        public PostIt() : this(0, 0, "")
+        private PostIt() : this(0, 0, "")
         {
 
         }
@@ -112,6 +112,19 @@ namespace ThePost_it
         {
             x += (x + dx >= 0) ? dx : 0;
             y += (y + dy >= 0) ? dy : 0;
+        }
+
+        public object Clone()
+        {
+            PostIt p = new PostIt();
+
+            p.id = id;
+            p.text = text;
+            p.x = x;
+            p.y = y;
+            p.selected = false;
+
+            return p;
         }
     }
 }

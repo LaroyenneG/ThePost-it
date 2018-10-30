@@ -31,6 +31,8 @@ namespace ThePost_it
                 if (p != null)
                 {
                     p.SetText(textBox.Text);
+
+                    SaveModel();
                 }
             }
         }
@@ -48,6 +50,8 @@ namespace ThePost_it
                     int dy = e.Y - mousePosition.Y;
 
                     p.Translate(dx, dy);
+
+                    SaveModel();
                 }
             }
 
@@ -80,7 +84,10 @@ namespace ThePost_it
                 }
 
                 p.SetSelect(true);
+
                 model.PopUpPostIt(p);
+
+                SaveModel();
             }
 
             mousePosition = e.Location;

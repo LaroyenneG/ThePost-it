@@ -18,10 +18,12 @@ namespace ThePost_it
         public override void ActionMouseClick(Object sender, MouseEventArgs e)
         {
 
-            if (view.PostItButtonIsChecked())
+            if (e.Button == MouseButtons.Left && view.PostItButtonIsChecked())
             {
                 view.panelDesigner.LockPostIt();
                 model.CreateNewPostit(e.X, e.Y);
+
+                SaveModel();
             }
             else if (view.CursorButtonIsChecked())
             {

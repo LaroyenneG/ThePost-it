@@ -66,6 +66,11 @@ namespace ThePost_it
             return listPostit;
         }
 
+        public void restoreFromMemento(Memento memento)
+        {
+            this.listPostit = memento.GetSavedListPostIt();
+        }
+
 
         public void PopUpPostIt(PostIt p)
         {
@@ -73,6 +78,19 @@ namespace ThePost_it
             {
                 listPostit.Insert(0, p);
             }
+        }
+
+        public bool OnePostItIsSelected()
+        {
+            foreach (PostIt p in listPostit)
+            {
+                if (p.IsSelected())
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
