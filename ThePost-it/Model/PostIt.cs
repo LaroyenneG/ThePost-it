@@ -114,6 +114,13 @@ namespace ThePost_it
             y += (y + dy >= 0) ? dy : 0;
         }
 
+        public override bool Equals(object obj)
+        {
+            PostIt p = obj as PostIt;
+
+            return x == p.x && y == p.y && text == p.text && id == p.id;
+        }
+
         public object Clone()
         {
             PostIt p = new PostIt();

@@ -52,6 +52,7 @@ namespace ThePost_it
 
         public void Do(IMemento m)
         {
+
             if (inUndoRedo)
                 throw new InvalidOperationException(
                     "Invoking do within an undo/redo action.");
@@ -60,7 +61,26 @@ namespace ThePost_it
             redoStack.Clear();
             // La pile de rétablissement est vidée lorsqu'une nouvelle
             // opération est réalisée
-            undoStack.Push(m);
+
+            if(undoStack.Count<=0 || !undoStack.Peek().Equals(m))
+            {
+                undoStack.Push(m);
+            }
+
+            Console.WriteLine(this);
+        }
+
+
+        public override string ToString()
+        {
+            string s="";
+
+            foreach(IMemento m in undoStack)
+            {
+                s += "#";
+            }
+
+            return s;
         }
     }
 }

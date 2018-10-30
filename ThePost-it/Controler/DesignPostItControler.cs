@@ -10,7 +10,7 @@ namespace ThePost_it
 {
     public class DesignPostItControler : MyControler
     {
-    
+
         private int idModel;
         private Point mousePosition;
 
@@ -22,18 +22,20 @@ namespace ThePost_it
 
         public override void ActionEvent(object sender, EventArgs e)
         {
-            if(sender.GetType()==typeof(TextBox))
+            if (sender.GetType() != typeof(TextBox))
             {
-                TextBox textBox = (TextBox)sender;
+                return;
+            }
 
-                PostIt p = model.GetPostItByID(idModel);
+            SaveModel();
 
-                if (p != null)
-                {
-                    p.SetText(textBox.Text);
+            TextBox textBox = (TextBox)sender;
 
-                    SaveModel();
-                }
+            PostIt p = model.GetPostItByID(idModel);
+
+            if (p != null)
+            {
+                p.SetText(textBox.Text);
             }
         }
 
@@ -51,48 +53,45 @@ namespace ThePost_it
 
                     p.Translate(dx, dy);
 
-                    SaveModel();
+                    UpdateView();
                 }
             }
-
-            UpdateView();
         }
 
         public override void ActionMouseUp(Object sender, MouseEventArgs e)
         {
+            SaveModel();
 
             PostIt p = model.GetPostItByID(idModel);
-
 
             if (p != null && (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
             {
                 p.SetSelect(false);
-            }
 
-            UpdateView();
+                UpdateView();
+            }
         }
 
         public override void ActionMouseDown(Object sender, MouseEventArgs e)
         {
+            SaveModel();
+
             PostIt p = model.GetPostItByID(idModel);
 
             if (p != null)
             {
-                if((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
                 {
                     model.UnselectAll();
                 }
 
                 p.SetSelect(true);
-
                 model.PopUpPostIt(p);
 
-                SaveModel();
+                UpdateView();
             }
 
             mousePosition = e.Location;
-
-            UpdateView();
         }
 
     }

@@ -12,6 +12,11 @@ namespace ThePost_it
 
         private List<PostIt> savedlist;
 
+        public Memento() : this(new Model())
+        {
+
+        }
+
         public Memento(Model model)
         {
             this.model = model;
@@ -33,6 +38,32 @@ namespace ThePost_it
         {
             model.restoreFromMemento(this);
             return this;
+        }
+
+        public override bool Equals(object obj)
+        {
+            Memento memento = obj as Memento;
+
+
+            if(memento.savedlist.Count  != savedlist.Count)
+            {
+                return false;
+            }
+
+            for(int i=0; i< savedlist.Count; i++)
+            {
+                if(!savedlist.ElementAt(i).Equals(memento.savedlist.ElementAt(i))) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
+        public override string ToString()
+        {
+            return savedlist.ToString();
         }
     }
 }

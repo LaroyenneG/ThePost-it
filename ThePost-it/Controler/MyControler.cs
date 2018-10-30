@@ -11,6 +11,7 @@ namespace ThePost_it
     {
 
         private static UndoRedoHistory history = new UndoRedoHistory();
+
         protected Model model;
         protected PostitEditor view;
 
@@ -40,7 +41,6 @@ namespace ThePost_it
             }
 
             view.panelDesigner.RemoveAll(removeList);
-
 
             foreach (PostIt p in model.GetPostItList())
             {

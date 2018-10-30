@@ -69,9 +69,9 @@ namespace ThePost_it
 
         private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            model.DeleteSelectedPostIts();
-
             SaveModel();
+
+            model.DeleteSelectedPostIts();
         }
     }
 }
