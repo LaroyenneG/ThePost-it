@@ -66,8 +66,6 @@ namespace ThePost_it
             {
                 undoStack.Push(m);
             }
-
-            Console.WriteLine(this);
         }
 
 

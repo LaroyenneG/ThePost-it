@@ -70,6 +70,7 @@ namespace ThePost_it
         protected void SaveModel()
         {
             history.Do(new Memento(model));
+            Console.WriteLine(history);
         }
 
         protected void RestoreModel()
@@ -82,6 +83,7 @@ namespace ThePost_it
 
         protected void CancelModel()
         {
+
             if (history.CanUndo)
             {
                 history.Undo();
