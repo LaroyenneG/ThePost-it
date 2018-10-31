@@ -125,13 +125,13 @@ namespace ThePost_it
             s += "undo :";
             foreach (IMemento m in undoStack)
             {
-                s += "#";
+                s += m.ToString();
             }
 
             s += "\nredo:";
             foreach (IMemento m in redoStack)
             {
-                s += "#";
+                s += m.ToString();
             }
 
             return s;

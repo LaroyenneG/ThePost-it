@@ -74,7 +74,13 @@ namespace ThePost_it
 
         public override string ToString()
         {
-            return savedlist.ToString();
+            string s = "In the memento : \n";
+            foreach (PostIt pi in savedlist)
+            {
+                s += "Post-it n°" + pi.GetID() + ":\n";
+                pi.ToString();
+            }
+            return s;
         }
     }
 }
