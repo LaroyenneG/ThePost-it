@@ -34,11 +34,11 @@ namespace ThePost_it
                         SupprimerToolStripMenuItem_Click(sender, e);
                         break;
 
-                    case "annulerToolStripMenuItem":
+                    case Constant.NAME_ITEM_ANNULER:
                         AnnulerToolStripMenuItem_Click(sender, e);
                         break;
 
-                    case "retablirToolStripMenuItem":
+                    case Constant.NAME_ITEM_RETABLIR:
                         RetablirToolStripMenuItem_Click(sender, e);
                         break;
 

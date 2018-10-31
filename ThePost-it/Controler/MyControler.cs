@@ -67,6 +67,7 @@ namespace ThePost_it
             view.SetCanRedo(history.CanRedo);
 
             Console.WriteLine(history);
+            Console.WriteLine(model);
         }
 
         protected void SaveModelAfterModifications()

@@ -93,13 +93,20 @@ namespace ThePost_it
             return false;
         }
 
-        /*
-         * Completer la methode tostring
-         */
-
         public override string ToString()
         {
-            return base.ToString();
+            string s = "This model : \n";
+            s += "List of Post-It : \n";
+            foreach(PostIt pi in listPostit)
+            {
+                s += "Post-it n°" + pi.GetID() + ":\n";
+                pi.ToString();
+                if (pi.IsSelected())
+                {
+                    s += "is selected \n";
+                }
+            }
+            return s;
         }
     }
 }
