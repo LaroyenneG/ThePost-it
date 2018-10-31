@@ -92,5 +92,14 @@ namespace ThePost_it
 
             return false;
         }
+
+        /*
+         * Completer la methode tostring
+         */
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

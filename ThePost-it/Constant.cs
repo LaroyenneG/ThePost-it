@@ -10,6 +10,9 @@ namespace ThePost_it
     {
         public const string NAME_ITEM_QUITTER = "quitterToolStripMenuItem";
         public const string NAME_ITEM_SUPPRIMER = "supprimerToolStripMenuItem";
+        /*
+         * A completer 
+         */
     }
 }
 

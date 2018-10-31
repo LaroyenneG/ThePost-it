@@ -43,9 +43,18 @@ namespace ThePost_it
         {
             lock (mutex)
             {
-                tmp = null;
-                IMemento top = undoStack.Pop();
-                redoStack.Push(top.Restore());
+                IMemento top = undoStack.Pop().Restore();
+
+                if (tmp != null && redoStack.Count <= 0)
+                {
+                    redoStack.Push(tmp);
+                }
+                else
+                {
+                    redoStack.Push(top);
+                }
+
+                tmp = null;                
             }
         }
 
@@ -53,9 +62,18 @@ namespace ThePost_it
         {
             lock (mutex)
             {
+                IMemento top = redoStack.Pop().Restore();
+
+                if (tmp != null && undoStack.Count <= 0)
+                {
+                    undoStack.Push(tmp);
+                }
+                else
+                {
+                    undoStack.Push(top);
+                }
+
                 tmp = null;
-                IMemento top = redoStack.Pop();
-                undoStack.Push(top.Restore());
             }
         }
 
@@ -97,6 +115,9 @@ namespace ThePost_it
         }
 
 
+        /*
+         * A completer pour que le # soit remplacé par la methode tostring du menmento
+         */
         public override string ToString()
         {
             string s = "--------------------------\n";

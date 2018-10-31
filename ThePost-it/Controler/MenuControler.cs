@@ -50,7 +50,6 @@ namespace ThePost_it
                 SaveModelAfterModifications();
             }
 
-
             UpdateView();
         }
 

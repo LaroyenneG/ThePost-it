@@ -65,6 +65,8 @@ namespace ThePost_it
             view.SetOnePostItIsSelected(model.OnePostItIsSelected());
             view.SetCanUndo(history.CanUndo);
             view.SetCanRedo(history.CanRedo);
+
+            Console.WriteLine(history);
         }
 
         protected void SaveModelAfterModifications()
@@ -76,7 +78,6 @@ namespace ThePost_it
         protected void SaveModelBeforeModifications()
         {
             history.PrepareTransaction(new Memento(model));
-            Console.WriteLine(history);
         }
 
         protected void RestoreModel()

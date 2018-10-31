@@ -86,17 +86,6 @@ namespace ThePost_it
             return id;
         }
 
-        public override string ToString()
-        {
-
-            string s = "Post-it :\n";
-            s += "X=" + this.x + "\n";
-            s += "Y=" + this.y + "\n";
-            s += "Text=" + this.text + "\n";
-
-            return s;
-        }
-
         public bool IsSelected()
         {
             return selected;
@@ -132,6 +121,18 @@ namespace ThePost_it
             p.selected = false;
 
             return p;
+        }
+
+
+        public override string ToString()
+        {
+
+            string s = "Post-it :\n";
+            s += "X=" + this.x + "\n";
+            s += "Y=" + this.y + "\n";
+            s += "Text=" + this.text + "\n";
+
+            return s;
         }
     }
 }
