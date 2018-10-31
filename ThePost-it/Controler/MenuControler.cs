@@ -18,6 +18,7 @@ namespace ThePost_it
 
         public override void ActionEvent(object sender, EventArgs e)
         {
+            SaveModelBeforeModifications();
 
             if (sender.GetType() == typeof(ToolStripMenuItem))
             {
@@ -45,6 +46,8 @@ namespace ThePost_it
                         Console.WriteLine("Error unknow name : " + item.Name);
                         break;
                 }
+
+                SaveModelAfterModifications();
             }
 
 
@@ -69,8 +72,6 @@ namespace ThePost_it
 
         private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveModel();
-
             model.DeleteSelectedPostIts();
         }
     }

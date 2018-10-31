@@ -8,14 +8,19 @@ namespace ThePost_it
 {
     public class UndoRedoHistory
     {
-       private Stack<IMemento> undoStack;
-       private Stack<IMemento> redoStack;
-       private bool inUndoRedo;
+
+        private readonly object mutex = new object();
+
+        private Stack<IMemento> undoStack;
+        private Stack<IMemento> redoStack;
+
+        private IMemento tmp;
 
         public UndoRedoHistory()
         {
             undoStack = new Stack<IMemento>();
             redoStack = new Stack<IMemento>();
+            tmp = null;
         }
 
         public bool CanUndo
@@ -36,44 +41,74 @@ namespace ThePost_it
 
         public void Undo()
         {
-            inUndoRedo = true;
-            IMemento top = undoStack.Pop();
-            redoStack.Push(top.Restore());
-            inUndoRedo = false;
+            lock (mutex)
+            {
+                tmp = null;
+                IMemento top = undoStack.Pop();
+                redoStack.Push(top.Restore());
+            }
         }
 
         public void Redo()
         {
-            inUndoRedo = true;
-            IMemento top = redoStack.Pop();
-            undoStack.Push(top.Restore());
-            inUndoRedo = false;
+            lock (mutex)
+            {
+                tmp = null;
+                IMemento top = redoStack.Pop();
+                undoStack.Push(top.Restore());
+            }
+        }
+
+        public void PrepareTransaction(IMemento m)
+        {
+            lock (mutex)
+            {
+                tmp = m;
+            }
+        }
+
+        public void CloseTransaction(IMemento m)
+        {
+            lock (mutex)
+            {
+                if (tmp != null && !tmp.Equals(m))
+                {
+                    Do(tmp);
+                }
+
+                tmp = null;
+            }
         }
 
         public void Do(IMemento m)
         {
-
-            if (inUndoRedo)
-                throw new InvalidOperationException(
-                    "Invoking do within an undo/redo action.");
-            // On ne peut réaliser une nouvelle opération pendant
-            // l'annulation ou le rétablissement d'une autre
-            redoStack.Clear();
-            // La pile de rétablissement est vidée lorsqu'une nouvelle
-            // opération est réalisée
-
-            if(undoStack.Count<=0 || !undoStack.Peek().Equals(m))
+            lock (mutex)
             {
-                undoStack.Push(m);
+
+                redoStack.Clear();
+                // La pile de rétablissement est vidée lorsqu'une nouvelle
+                // opération est réalisée
+
+                if (!(undoStack.Count >= 1 && undoStack.Peek().Equals(m)))
+                {
+                    undoStack.Push(m);
+                }
             }
         }
 
 
         public override string ToString()
         {
-            string s="";
+            string s = "--------------------------\n";
 
-            foreach(IMemento m in undoStack)
+            s += "undo :";
+            foreach (IMemento m in undoStack)
+            {
+                s += "#";
+            }
+
+            s += "\nredo:";
+            foreach (IMemento m in redoStack)
             {
                 s += "#";
             }

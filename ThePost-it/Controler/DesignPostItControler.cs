@@ -27,7 +27,7 @@ namespace ThePost_it
                 return;
             }
 
-            SaveModel();
+            SaveModelBeforeModifications();
 
             TextBox textBox = (TextBox)sender;
 
@@ -37,11 +37,18 @@ namespace ThePost_it
             {
                 p.SetText(textBox.Text);
             }
+
+            SaveModelAfterModifications();
         }
+
+        public override void ActionMouseUp(object sender, MouseEventArgs e)
+        {
+            SaveModelAfterModifications();
+        }
+
 
         public override void ActionMouseMove(Object sender, MouseEventArgs e)
         {
-
             PostIt p = model.GetPostItByID(idModel);
 
             if (p != null)
@@ -58,23 +65,9 @@ namespace ThePost_it
             }
         }
 
-        public override void ActionMouseUp(Object sender, MouseEventArgs e)
-        {
-            SaveModel();
-
-            PostIt p = model.GetPostItByID(idModel);
-
-            if (p != null && (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
-            {
-                p.SetSelect(false);
-
-                UpdateView();
-            }
-        }
-
         public override void ActionMouseDown(Object sender, MouseEventArgs e)
         {
-            SaveModel();
+            SaveModelBeforeModifications();
 
             PostIt p = model.GetPostItByID(idModel);
 
@@ -93,6 +86,5 @@ namespace ThePost_it
 
             mousePosition = e.Location;
         }
-
     }
 }

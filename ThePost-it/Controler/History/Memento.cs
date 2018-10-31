@@ -44,20 +44,31 @@ namespace ThePost_it
         {
             Memento memento = obj as Memento;
 
-
-            if(memento.savedlist.Count  != savedlist.Count)
+            if(memento.savedlist.Count != savedlist.Count)
             {
                 return false;
             }
 
-            for(int i=0; i< savedlist.Count; i++)
+            foreach(PostIt p1 in savedlist)
             {
-                if(!savedlist.ElementAt(i).Equals(memento.savedlist.ElementAt(i))) {
+                bool find = false;
+
+                foreach(PostIt p2 in memento.savedlist)
+                {
+                    if(p1.Equals(p2))
+                    {
+                        find = true;
+                        break;
+                    }
+                }
+
+                if(!find)
+                {
                     return false;
                 }
             }
 
-            return true;
+            return true; 
         }
 
 

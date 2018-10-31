@@ -18,7 +18,7 @@ namespace ThePost_it
         public override void ActionMouseClick(Object sender, MouseEventArgs e)
         {
 
-            SaveModel();
+            SaveModelBeforeModifications();
 
             if (e.Button == MouseButtons.Left && view.PostItButtonIsChecked())
             {
@@ -30,6 +30,8 @@ namespace ThePost_it
                 view.panelDesigner.UnLockPostIt();
                 model.UnselectAll();
             }
+
+            SaveModelAfterModifications();
 
             UpdateView();
         }

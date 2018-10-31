@@ -67,9 +67,15 @@ namespace ThePost_it
             view.SetCanRedo(history.CanRedo);
         }
 
-        protected void SaveModel()
+        protected void SaveModelAfterModifications()
         {
-            history.Do(new Memento(model));
+            history.CloseTransaction(new Memento(model));
+            Console.WriteLine(history);
+        }
+
+        protected void SaveModelBeforeModifications()
+        {
+            history.PrepareTransaction(new Memento(model));
             Console.WriteLine(history);
         }
 
@@ -83,7 +89,6 @@ namespace ThePost_it
 
         protected void CancelModel()
         {
-
             if (history.CanUndo)
             {
                 history.Undo();
