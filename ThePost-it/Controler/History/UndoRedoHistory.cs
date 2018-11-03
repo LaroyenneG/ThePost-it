@@ -114,10 +114,7 @@ namespace ThePost_it
             }
         }
 
-
-        /*
-         * A completer pour que le # soit remplacé par la methode tostring du menmento
-         */
+        
         public override string ToString()
         {
             string s = "--------------------------\n";

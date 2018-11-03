@@ -59,13 +59,13 @@
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quitterToolStripMenuItem});
-            this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
+            this.fichierToolStripMenuItem.Name = Constant.NAME_ITEM_FICHIER;
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
             // 
             // quitterToolStripMenuItem
             // 
-            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
+            this.quitterToolStripMenuItem.Name = Constant.NAME_ITEM_QUITTER;
             this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
@@ -76,14 +76,14 @@
             this.supprimerToolStripMenuItem,
             this.annulerToolStripMenuItem,
             this.retablirToolStripMenuItem});
-            this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
+            this.editionToolStripMenuItem.Name = Constant.NAME_ITEM_EDITION;
             this.editionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.editionToolStripMenuItem.Text = "Edition";
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Enabled = false;
-            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
+            this.supprimerToolStripMenuItem.Name = Constant.NAME_ITEM_SUPPRIMER;
             this.supprimerToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
@@ -91,7 +91,7 @@
             // annulerToolStripMenuItem
             // 
             this.annulerToolStripMenuItem.Enabled = false;
-            this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
+            this.annulerToolStripMenuItem.Name = Constant.NAME_ITEM_ANNULER;
             this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.annulerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.annulerToolStripMenuItem.Text = "Annuler";
@@ -99,7 +99,7 @@
             // retablirToolStripMenuItem
             // 
             this.retablirToolStripMenuItem.Enabled = false;
-            this.retablirToolStripMenuItem.Name = "retablirToolStripMenuItem";
+            this.retablirToolStripMenuItem.Name = Constant.NAME_ITEM_RETABLIR;
             this.retablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.retablirToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.retablirToolStripMenuItem.Text = "Rétablir";
