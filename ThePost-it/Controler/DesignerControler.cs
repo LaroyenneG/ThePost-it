@@ -12,7 +12,7 @@ namespace ThePost_it
 
         public DesignerControler(Model model, PostitEditor view) : base(model, view)
         {
-            
+
         }
 
         public override void ActionMouseClick(Object sender, MouseEventArgs e)

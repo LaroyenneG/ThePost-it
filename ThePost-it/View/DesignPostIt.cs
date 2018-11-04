@@ -55,7 +55,7 @@ namespace ThePost_it
 
             this.Location = new Point(postIt.GetX(), postIt.GetY());
 
-            if(postIt.IsSelected())
+            if (postIt.IsSelected())
             {
                 Selected();
             }

@@ -97,7 +97,7 @@ namespace ThePost_it
         {
             string s = "This model : \n";
             s += "List of Post-It : \n";
-            foreach(PostIt pi in listPostit)
+            foreach (PostIt pi in listPostit)
             {
                 s += "Post-it n°" + pi.GetID() + ":\n";
                 pi.ToString();

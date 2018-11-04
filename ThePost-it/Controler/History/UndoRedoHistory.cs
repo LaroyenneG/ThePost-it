@@ -54,7 +54,7 @@ namespace ThePost_it
                     redoStack.Push(top);
                 }
 
-                tmp = null;                
+                tmp = null;
             }
         }
 
@@ -114,7 +114,7 @@ namespace ThePost_it
             }
         }
 
-        
+
         public override string ToString()
         {
             string s = "--------------------------\n";

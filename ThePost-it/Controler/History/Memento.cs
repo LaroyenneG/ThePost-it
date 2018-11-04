@@ -23,7 +23,7 @@ namespace ThePost_it
 
             savedlist = new List<PostIt>();
 
-            foreach(PostIt p in model.GetPostItList())
+            foreach (PostIt p in model.GetPostItList())
             {
                 savedlist.Add((PostIt)p.Clone());
             }
@@ -44,31 +44,31 @@ namespace ThePost_it
         {
             Memento memento = obj as Memento;
 
-            if(memento.savedlist.Count != savedlist.Count)
+            if (memento.savedlist.Count != savedlist.Count)
             {
                 return false;
             }
 
-            foreach(PostIt p1 in savedlist)
+            foreach (PostIt p1 in savedlist)
             {
                 bool find = false;
 
-                foreach(PostIt p2 in memento.savedlist)
+                foreach (PostIt p2 in memento.savedlist)
                 {
-                    if(p1.Equals(p2))
+                    if (p1.Equals(p2))
                     {
                         find = true;
                         break;
                     }
                 }
 
-                if(!find)
+                if (!find)
                 {
                     return false;
                 }
             }
 
-            return true; 
+            return true;
         }
 
 

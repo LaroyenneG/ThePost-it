@@ -30,7 +30,7 @@ namespace ThePost_it
 
         public void RemoveAll(List<DesignPostIt> list)
         {
-            foreach(DesignPostIt d in list)
+            foreach (DesignPostIt d in list)
             {
                 Remove(d);
             }
