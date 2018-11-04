@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace ThePost_it
 {
 
-    class MenuControler : MyControler
+    class MenuControler : MasterControler
     {
 
         public MenuControler(Model model, PostitEditor view) : base(model, view)

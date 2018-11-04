@@ -41,7 +41,7 @@ namespace ThePost_it
             this.Controls.Remove(d);
         }
 
-        public DesignPostIt CreateNewPostItDesigner(PostIt p, MyControler controler)
+        public DesignPostIt CreateNewPostItDesigner(PostIt p, MasterControler controler)
         {
             DesignPostIt design = new DesignPostIt(p);
 
@@ -53,7 +53,7 @@ namespace ThePost_it
             return design;
         }
 
-        public void SetControler(MyControler controler)
+        public void SetControler(MasterControler controler)
         {
             this.MouseClick += new MouseEventHandler(controler.ActionMouseClick);
         }

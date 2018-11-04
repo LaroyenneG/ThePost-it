@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    public class DesignPostItControler : MyControler
+    public class DesignPostItControler : MasterControler
     {
 
         private int idModel;

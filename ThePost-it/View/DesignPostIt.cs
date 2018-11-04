@@ -91,7 +91,7 @@ namespace ThePost_it
             this.Enabled = true;
         }
 
-        public void SetControler(MyControler controler)
+        public void SetControler(MasterControler controler)
         {
             this.tb.TextChanged += new EventHandler(controler.ActionEvent);
             this.MouseDown += new MouseEventHandler(controler.ActionMouseDown);

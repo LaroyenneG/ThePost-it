@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    public class DesignerControler : MyControler
+    public class DesignerControler : MasterControler
     {
 
         public DesignerControler(Model model, PostitEditor view) : base(model, view)

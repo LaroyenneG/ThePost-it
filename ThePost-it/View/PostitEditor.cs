@@ -18,7 +18,7 @@ namespace ThePost_it
             InitializeComponent();
         }
 
-        public void SetMenuControler(MyControler controler)
+        public void SetMenuControler(MasterControler controler)
         {
             this.quitterToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
             this.supprimerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
@@ -26,7 +26,7 @@ namespace ThePost_it
             this.retablirToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
         }
 
-        public void SetDesignerControler(MyControler controler)
+        public void SetDesignerControler(MasterControler controler)
         {
             this.panelDesigner.SetControler(controler);
         }
