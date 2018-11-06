@@ -51,7 +51,7 @@
             this.editionToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1251, 24);
+            this.menu.Size = new System.Drawing.Size(784, 24);
             this.menu.TabIndex = 0;
             this.menu.Text = "menu";
             // 
@@ -59,13 +59,13 @@
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quitterToolStripMenuItem});
-            this.fichierToolStripMenuItem.Name = Constant.NAME_ITEM_FICHIER;
+            this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
             // 
             // quitterToolStripMenuItem
             // 
-            this.quitterToolStripMenuItem.Name = Constant.NAME_ITEM_QUITTER;
+            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
@@ -73,17 +73,17 @@
             // editionToolStripMenuItem
             // 
             this.editionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.supprimerToolStripMenuItem,
             this.annulerToolStripMenuItem,
-            this.retablirToolStripMenuItem});
-            this.editionToolStripMenuItem.Name = Constant.NAME_ITEM_EDITION;
+            this.retablirToolStripMenuItem,
+            this.supprimerToolStripMenuItem});
+            this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
             this.editionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.editionToolStripMenuItem.Text = "Edition";
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Enabled = false;
-            this.supprimerToolStripMenuItem.Name = Constant.NAME_ITEM_SUPPRIMER;
+            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
             this.supprimerToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
@@ -91,7 +91,7 @@
             // annulerToolStripMenuItem
             // 
             this.annulerToolStripMenuItem.Enabled = false;
-            this.annulerToolStripMenuItem.Name = Constant.NAME_ITEM_ANNULER;
+            this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
             this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.annulerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.annulerToolStripMenuItem.Text = "Annuler";
@@ -99,7 +99,7 @@
             // retablirToolStripMenuItem
             // 
             this.retablirToolStripMenuItem.Enabled = false;
-            this.retablirToolStripMenuItem.Name = Constant.NAME_ITEM_RETABLIR;
+            this.retablirToolStripMenuItem.Name = "retablirToolStripMenuItem";
             this.retablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.retablirToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.retablirToolStripMenuItem.Text = "Rétablir";
@@ -111,7 +111,7 @@
             this.panelMode.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMode.Location = new System.Drawing.Point(0, 24);
             this.panelMode.Name = "panelMode";
-            this.panelMode.Size = new System.Drawing.Size(45, 472);
+            this.panelMode.Size = new System.Drawing.Size(45, 431);
             this.panelMode.TabIndex = 1;
             // 
             // postItButton
@@ -145,21 +145,21 @@
             this.panelDesigner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesigner.Location = new System.Drawing.Point(45, 24);
             this.panelDesigner.Name = "panelDesigner";
-            this.panelDesigner.Size = new System.Drawing.Size(1206, 472);
+            this.panelDesigner.Size = new System.Drawing.Size(739, 431);
             this.panelDesigner.TabIndex = 2;
             // 
             // PostitEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 496);
+            this.ClientSize = new System.Drawing.Size(784, 455);
             this.Controls.Add(this.panelDesigner);
             this.Controls.Add(this.panelMode);
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.Name = "PostitEditor";
-            this.Text = "Post-It editor";
+            this.Text = "Post-It Editeur";
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.panelMode.ResumeLayout(false);

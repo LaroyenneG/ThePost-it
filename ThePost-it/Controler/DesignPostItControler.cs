@@ -73,13 +73,16 @@ namespace ThePost_it
 
             if (p != null)
             {
-                if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                if (e.Button == MouseButtons.Left)
                 {
-                    model.UnselectAll();
-                }
+                    if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                    {
+                        model.UnselectAll();
+                    }
 
-                p.SetSelect(true);
-                model.PopUpPostIt(p);
+                    p.SetSelect(true);
+                    model.PopUpPostIt(p);
+                }
 
                 UpdateView();
             }
