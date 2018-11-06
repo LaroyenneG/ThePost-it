@@ -14,10 +14,13 @@ namespace ThePost_it
         private int idModel;
         private Point mousePosition;
 
+        private bool isMoved;
+
         public DesignPostItControler(Model model, PostitEditor view, int idModel) : base(model, view)
         {
             mousePosition = new Point(0, 0);
             this.idModel = idModel;
+            isMoved = false;
         }
 
         public override void ActionEvent(object sender, EventArgs e)
@@ -27,33 +30,35 @@ namespace ThePost_it
                 return;
             }
 
-            SaveModelBeforeModifications();
-
             TextBox textBox = (TextBox)sender;
 
             PostIt p = model.GetPostItByID(idModel);
 
             if (p != null)
             {
+                MememtoSaveModel();
                 p.SetText(textBox.Text);
             }
-
-            SaveModelAfterModifications();
         }
 
         public override void ActionMouseUp(object sender, MouseEventArgs e)
         {
-            SaveModelAfterModifications();
+            isMoved = false;
         }
 
 
         public override void ActionMouseMove(Object sender, MouseEventArgs e)
         {
-            PostIt p = model.GetPostItByID(idModel);
-
-            if (p != null)
+            if (e.Button == MouseButtons.Left)
             {
-                if (e.Button == MouseButtons.Left)
+                if (!isMoved)
+                {
+                    MememtoSaveModel();
+                }
+
+                PostIt p = model.GetPostItByID(idModel);
+
+                if (p != null)
                 {
                     int dx = e.X - mousePosition.X;
                     int dy = e.Y - mousePosition.Y;
@@ -62,12 +67,14 @@ namespace ThePost_it
 
                     UpdateView();
                 }
+
+                isMoved = true;
             }
         }
 
         public override void ActionMouseDown(Object sender, MouseEventArgs e)
         {
-            SaveModelBeforeModifications();
+
 
             PostIt p = model.GetPostItByID(idModel);
 

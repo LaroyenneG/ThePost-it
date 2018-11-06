@@ -47,13 +47,13 @@
   <ItemGroup>
     <Compile Include="Constant.cs" />
     <Compile Include="Controler\DesignerControler.cs" />
-    <Compile Include="Controler\History\IMemento.cs" />
-    <Compile Include="Controler\History\Memento.cs" />
+    <Compile Include="History\IMemento.cs" />
+    <Compile Include="History\MyModelMemento.cs" />
     <Compile Include="Controler\MasterControler.cs" />
     <Compile Include="Controler\ControlGroup.cs" />
     <Compile Include="Controler\DesignPostItControler.cs" />
     <Compile Include="Controler\MenuControler.cs" />
-    <Compile Include="Controler\History\UndoRedoHistory.cs" />
+    <Compile Include="History\UndoRedoHistory.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Postit.cs" />
     <Compile Include="View\DesignPostIt.cs">

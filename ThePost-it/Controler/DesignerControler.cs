@@ -17,11 +17,10 @@ namespace ThePost_it
 
         public override void ActionMouseClick(Object sender, MouseEventArgs e)
         {
-
-            SaveModelBeforeModifications();
-
             if (e.Button == MouseButtons.Left && view.PostItButtonIsChecked())
             {
+                MememtoSaveModel();
+
                 view.panelDesigner.LockPostIt();
                 model.CreateNewPostit(e.X, e.Y);
             }
@@ -30,8 +29,6 @@ namespace ThePost_it
                 view.panelDesigner.UnLockPostIt();
                 model.UnselectAll();
             }
-
-            SaveModelAfterModifications();
 
             UpdateView();
         }

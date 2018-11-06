@@ -26,6 +26,18 @@ namespace ThePost_it
             return p;
         }
 
+        public List<PostIt> GetCurrentState()
+        {
+            List<PostIt> list = new List<PostIt>();
+
+            foreach (PostIt p in listPostit)
+            {
+                list.Add((PostIt)p.Clone());
+            }
+
+            return list;
+        }
+
         public PostIt GetPostItByID(int id)
         {
 
@@ -66,9 +78,9 @@ namespace ThePost_it
             return listPostit;
         }
 
-        public void restoreFromMemento(Memento memento)
+        public void SetState(List<PostIt> listPostit)
         {
-            this.listPostit = memento.GetSavedListPostIt();
+            this.listPostit = listPostit;
         }
 
 
