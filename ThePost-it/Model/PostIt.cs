@@ -15,9 +15,7 @@ namespace ThePost_it
         private int x;
         private int y;
         private int id;
-
         private string text;
-
         private bool selected;
 
         public PostIt(int x, int y, string text)
@@ -46,7 +44,7 @@ namespace ThePost_it
 
         public string GetText()
         {
-            return text;
+            return this.text;
         }
 
         public void SetX(int x)
@@ -83,41 +81,34 @@ namespace ThePost_it
 
         public int GetID()
         {
-            return id;
+            return this.id;
         }
 
         public bool IsSelected()
         {
-            return selected;
+            return this.selected;
         }
 
         public void SetSelect(bool b)
         {
-            selected = b;
+            this.selected = b;
         }
 
 
         public void Translate(int dx, int dy)
         {
-            x += (x + dx >= 0) ? dx : 0;
-            y += (y + dy >= 0) ? dy : 0;
-        }
-
-        public override bool Equals(object obj)
-        {
-            PostIt p = obj as PostIt;
-
-            return x == p.x && y == p.y && text == p.text && id == p.id;
+            this.x += (x + dx >= 0) ? dx : 0;
+            this.y += (y + dy >= 0) ? dy : 0;
         }
 
         public object Clone()
         {
             PostIt p = new PostIt();
 
-            p.id = id;
-            p.text = text;
-            p.x = x;
-            p.y = y;
+            p.id = this.id;
+            p.text = this.text;
+            p.x = this.x;
+            p.y = this.y;
             p.selected = false;
 
             return p;

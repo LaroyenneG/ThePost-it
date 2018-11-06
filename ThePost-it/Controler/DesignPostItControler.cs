@@ -8,19 +8,20 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    public class DesignPostItControler : MasterControler
+    public class DesignPostItControler : AbstractControler
     {
 
-        private int idModel;
+        private PostIt postIt;
+
         private Point mousePosition;
 
         private bool isMoved;
 
         public DesignPostItControler(Model model, PostitEditor view, int idModel) : base(model, view)
         {
-            mousePosition = new Point(0, 0);
-            this.idModel = idModel;
-            isMoved = false;
+            this.mousePosition = new Point(0, 0);
+            this.postIt = model.GetPostItByID(idModel);
+            this.isMoved = false;
         }
 
         public override void ActionEvent(object sender, EventArgs e)
@@ -32,69 +33,51 @@ namespace ThePost_it
 
             TextBox textBox = (TextBox)sender;
 
-            PostIt p = model.GetPostItByID(idModel);
-
-            if (p != null)
-            {
-                MememtoSaveModel();
-                p.SetText(textBox.Text);
-            }
+            this.MememtoSaveModel();
+            this.postIt.SetText(textBox.Text);
         }
 
         public override void ActionMouseUp(object sender, MouseEventArgs e)
         {
-            isMoved = false;
+            this.isMoved = false;
         }
-
 
         public override void ActionMouseMove(Object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (!isMoved)
+                if (!this.isMoved)
                 {
-                    MememtoSaveModel();
+                    this.MememtoSaveModel();
                 }
 
-                PostIt p = model.GetPostItByID(idModel);
+                int dx = e.X - mousePosition.X;
+                int dy = e.Y - mousePosition.Y;
 
-                if (p != null)
-                {
-                    int dx = e.X - mousePosition.X;
-                    int dy = e.Y - mousePosition.Y;
+                this.postIt.Translate(dx, dy);
 
-                    p.Translate(dx, dy);
+                this.UpdateView();
 
-                    UpdateView();
-                }
-
-                isMoved = true;
+                this.isMoved = true;
             }
         }
 
         public override void ActionMouseDown(Object sender, MouseEventArgs e)
         {
-
-
-            PostIt p = model.GetPostItByID(idModel);
-
-            if (p != null)
+            if (e.Button == MouseButtons.Left)
             {
-                if (e.Button == MouseButtons.Left)
+                if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
                 {
-                    if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
-                    {
-                        model.UnselectAll();
-                    }
-
-                    p.SetSelect(true);
-                    model.PopUpPostIt(p);
+                    model.UnselectAll();
                 }
 
-                UpdateView();
+                this.postIt.SetSelect(true);
+                model.PopUpPostIt(this.postIt);
             }
 
-            mousePosition = e.Location;
+            this.UpdateView();
+
+            this.mousePosition = e.Location;
         }
     }
 }

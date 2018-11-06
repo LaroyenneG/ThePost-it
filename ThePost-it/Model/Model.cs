@@ -8,12 +8,11 @@ namespace ThePost_it
 {
     public class Model
     {
-
         private List<PostIt> listPostit;
 
         public Model()
         {
-            listPostit = new List<PostIt>();
+            this.listPostit = new List<PostIt>();
         }
 
 
@@ -21,7 +20,7 @@ namespace ThePost_it
         {
             PostIt p = new PostIt(x, y);
 
-            listPostit.Insert(0, p);
+            this.listPostit.Insert(0, p);
 
             return p;
         }
@@ -62,7 +61,7 @@ namespace ThePost_it
 
         public int GetIndex(PostIt p)
         {
-            return listPostit.IndexOf(p);
+            return this.listPostit.IndexOf(p);
         }
 
         public void UnselectAll()
@@ -75,7 +74,7 @@ namespace ThePost_it
 
         public List<PostIt> GetPostItList()
         {
-            return listPostit;
+            return this.listPostit;
         }
 
         public void SetState(List<PostIt> listPostit)
@@ -86,9 +85,9 @@ namespace ThePost_it
 
         public void PopUpPostIt(PostIt p)
         {
-            if (listPostit.Remove(p))
+            if (this.listPostit.Remove(p))
             {
-                listPostit.Insert(0, p);
+                this.listPostit.Insert(0, p);
             }
         }
 
@@ -109,11 +108,11 @@ namespace ThePost_it
         {
             string s = "This model : \n";
             s += "List of Post-It : \n";
-            foreach (PostIt pi in listPostit)
+            foreach (PostIt p in listPostit)
             {
-                s += "Post-it n°" + pi.GetID() + ":\n";
-                pi.ToString();
-                if (pi.IsSelected())
+                s += "Post-it n°" + p.GetID() + ":\n";
+                p.ToString();
+                if (p.IsSelected())
                 {
                     s += "is selected \n";
                 }

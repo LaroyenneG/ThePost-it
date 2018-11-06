@@ -20,13 +20,10 @@ namespace ThePost_it
 
         public DesignPostIt(PostIt p)
         {
-            idModel = p.GetID();
-
-            InitializeComponent();
-
+            this.idModel = p.GetID();
+            this.InitializeComponent();
             this.Controls.Add(tb);
-
-            Display(p);
+            this.Display(p);
         }
 
 
@@ -40,10 +37,10 @@ namespace ThePost_it
             this.tb.Size = new Size(POST_SIZE.Width - MARGIN_SIZE * 2, POST_SIZE.Height - MARGIN_SIZE * 2);
             this.tb.BorderStyle = BorderStyle.None;
             this.BorderStyle = BorderStyle.None;
-            SetColor(DEFAULT_COLOR);
+            this.SetColor(DEFAULT_COLOR);
             this.tb.Multiline = true;
             this.tb.Location = new Point(MARGIN_SIZE, MARGIN_SIZE);
-            LockFocus();
+            this.LockFocus();
         }
 
         public void Display(PostIt postIt)
@@ -57,11 +54,11 @@ namespace ThePost_it
 
             if (postIt.IsSelected())
             {
-                Selected();
+                this.Selected();
             }
             else
             {
-                Deseleted();
+                this.Deseleted();
             }
         }
 
@@ -91,7 +88,7 @@ namespace ThePost_it
             this.Enabled = true;
         }
 
-        public void SetControler(MasterControler controler)
+        public void SetControler(AbstractControler controler)
         {
             this.tb.TextChanged += new EventHandler(controler.ActionEvent);
             this.MouseDown += new MouseEventHandler(controler.ActionMouseDown);
@@ -101,12 +98,12 @@ namespace ThePost_it
 
         public bool Correspond(PostIt p)
         {
-            return p.GetID() == idModel;
+            return p.GetID() == this.idModel;
         }
 
         public int GetID()
         {
-            return idModel;
+            return this.idModel;
         }
     }
 }

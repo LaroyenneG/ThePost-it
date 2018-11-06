@@ -7,31 +7,32 @@ using System.Windows.Forms;
 
 namespace ThePost_it
 {
-    public abstract class MasterControler
+    public abstract class AbstractControler
     {
         private static UndoRedoHistory history = new UndoRedoHistory();
 
         protected Model model;
         protected PostitEditor view;
+        private PanelDesigner panelDesigner;
 
-        public MasterControler(Model model, PostitEditor view)
+        public AbstractControler(Model model, PostitEditor view)
         {
             this.model = model;
             this.view = view;
+            this.panelDesigner = view.GetPanelDesigner();
         }
 
         protected void UpdateView()
         {
-
             List<DesignPostIt> removeList = new List<DesignPostIt>();
 
-            foreach (DesignPostIt d in view.panelDesigner.GetDesignPostItList())
+            foreach (DesignPostIt d in panelDesigner.GetDesignPostItList())
             {
                 PostIt p = model.GetPostItByID(d.GetID());
                 if (p != null)
                 {
                     d.Display(p);
-                    view.panelDesigner.Controls.SetChildIndex(d, model.GetIndex(p));
+                    this.panelDesigner.Controls.SetChildIndex(d, model.GetIndex(p));
                 }
                 else
                 {
@@ -39,13 +40,13 @@ namespace ThePost_it
                 }
             }
 
-            view.panelDesigner.RemoveAll(removeList);
+            this.panelDesigner.RemoveAll(removeList);
 
             foreach (PostIt p in model.GetPostItList())
             {
                 bool find = false;
 
-                foreach (DesignPostIt d in view.panelDesigner.GetDesignPostItList())
+                foreach (DesignPostIt d in panelDesigner.GetDesignPostItList())
                 {
                     if (d.Correspond(p))
                     {
@@ -56,13 +57,13 @@ namespace ThePost_it
 
                 if (!find)
                 {
-                    view.panelDesigner.CreateNewPostItDesigner(p, new DesignPostItControler(model, view, p.GetID()));
+                    this.panelDesigner.CreateNewPostItDesigner(p, new DesignPostItControler(model, view, p.GetID()));
                 }
             }
-
-            view.SetOnePostItIsSelected(model.OnePostItIsSelected());
-            view.SetCanUndo(history.CanUndo);
-            view.SetCanRedo(history.CanRedo);
+          
+            this.view.SetOnePostItIsSelected(model.OnePostItIsSelected());
+            this.view.SetCanUndo(history.CanUndo);
+            this.view.SetCanRedo(history.CanRedo);
         }
 
         protected void RestoreModel()

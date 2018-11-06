@@ -49,7 +49,7 @@
     <Compile Include="Controler\DesignerControler.cs" />
     <Compile Include="History\IMemento.cs" />
     <Compile Include="History\MyModelMemento.cs" />
-    <Compile Include="Controler\MasterControler.cs" />
+    <Compile Include="Controler\AbstractControler.cs" />
     <Compile Include="Controler\ControlGroup.cs" />
     <Compile Include="Controler\DesignPostItControler.cs" />
     <Compile Include="Controler\MenuControler.cs" />

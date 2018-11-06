@@ -32,8 +32,13 @@ namespace ThePost_it
         {
             foreach (DesignPostIt d in list)
             {
-                Remove(d);
+                this.Remove(d);
             }
+        }
+
+        public void Clear()
+        {
+            this.Controls.Clear();
         }
 
         public void Remove(DesignPostIt d)
@@ -41,7 +46,7 @@ namespace ThePost_it
             this.Controls.Remove(d);
         }
 
-        public DesignPostIt CreateNewPostItDesigner(PostIt p, MasterControler controler)
+        public DesignPostIt CreateNewPostItDesigner(PostIt p, AbstractControler controler)
         {
             DesignPostIt design = new DesignPostIt(p);
 
@@ -53,14 +58,13 @@ namespace ThePost_it
             return design;
         }
 
-        public void SetControler(MasterControler controler)
+        public void SetControler(AbstractControler controler)
         {
             this.MouseClick += new MouseEventHandler(controler.ActionMouseClick);
         }
 
         public List<DesignPostIt> GetDesignPostItList()
         {
-
             List<DesignPostIt> listDesign = new List<DesignPostIt>();
 
             foreach (Control c in this.Controls)

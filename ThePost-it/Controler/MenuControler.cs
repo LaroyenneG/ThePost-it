@@ -8,12 +8,11 @@ using System.Windows.Forms;
 namespace ThePost_it
 {
 
-    class MenuControler : MasterControler
+    class MenuControler : AbstractControler
     {
 
         public MenuControler(Model model, PostitEditor view) : base(model, view)
         {
-
         }
 
         public override void ActionEvent(object sender, EventArgs e)
@@ -26,19 +25,19 @@ namespace ThePost_it
                 switch (item.Name)
                 {
                     case Constant.NAME_ITEM_QUITTER:
-                        QuitterToolStripMenuItem_Click(sender, e);
+                        this.QuitterToolStripMenuItem_Click(sender, e);
                         break;
 
                     case Constant.NAME_ITEM_SUPPRIMER:
-                        SupprimerToolStripMenuItem_Click(sender, e);
+                        this.SupprimerToolStripMenuItem_Click(sender, e);
                         break;
 
                     case Constant.NAME_ITEM_ANNULER:
-                        AnnulerToolStripMenuItem_Click(sender, e);
+                        this.AnnulerToolStripMenuItem_Click(sender, e);
                         break;
 
                     case Constant.NAME_ITEM_RETABLIR:
-                        RetablirToolStripMenuItem_Click(sender, e);
+                        this.RetablirToolStripMenuItem_Click(sender, e);
                         break;
 
                     default:
@@ -47,18 +46,18 @@ namespace ThePost_it
                 }
             }
 
-            UpdateView();
+            this.UpdateView();
         }
 
 
         private void AnnulerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CancelModel();
+            this.CancelModel();
         }
 
         private void RetablirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RestoreModel();
+            this.RestoreModel();
         }
 
         private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,10 +67,10 @@ namespace ThePost_it
 
         private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(model.OnePostItIsSelected())
+            if (this.model.OnePostItIsSelected())
             {
-                MememtoSaveModel();
-                model.DeleteSelectedPostIts();
+                this.MememtoSaveModel();
+                this.model.DeleteSelectedPostIts();
             }
         }
     }

@@ -171,7 +171,7 @@
 
         #endregion
 
-        public PanelDesigner panelDesigner;
+        private PanelDesigner panelDesigner;
 
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
