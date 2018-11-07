@@ -44,21 +44,24 @@ namespace ThePost_it
 
         public override void ActionMouseMove(Object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (this.view.CursorButtonIsChecked())
             {
-                if (!this.isMoved)
+                if (e.Button == MouseButtons.Left)
                 {
-                    this.MememtoSaveModel();
+                    if (!this.isMoved)
+                    {
+                        this.MememtoSaveModel();
+                    }
+
+                    int dx = e.X - mousePosition.X;
+                    int dy = e.Y - mousePosition.Y;
+
+                    this.postIt.Translate(dx, dy);
+
+                    this.UpdateView();
+
+                    this.isMoved = true;
                 }
-
-                int dx = e.X - mousePosition.X;
-                int dy = e.Y - mousePosition.Y;
-
-                this.postIt.Translate(dx, dy);
-
-                this.UpdateView();
-
-                this.isMoved = true;
             }
         }
 
