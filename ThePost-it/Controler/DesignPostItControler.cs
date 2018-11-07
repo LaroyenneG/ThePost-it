@@ -65,19 +65,23 @@ namespace ThePost_it
         public override void ActionMouseDown(Object sender, MouseEventArgs e)
         {
 
-            if (e.Button == MouseButtons.Left)
+            if (this.view.CursorButtonIsChecked())
             {
-                if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
-                {
-                    model.UnselectAll();
-                    this.postIt.SetSelect(true);
-                }
-                else
-                {
-                    this.postIt.SetSelect(!this.postIt.IsSelected());
-                }
 
-                this.model.PopUpPostIt(this.postIt);
+                if (e.Button == MouseButtons.Left)
+                {
+                    if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                    {
+                        model.UnselectAll();
+                        this.postIt.SetSelect(true);
+                    }
+                    else
+                    {
+                        this.postIt.SetSelect(!this.postIt.IsSelected());
+                    }
+
+                    this.model.PopUpPostIt(this.postIt);
+                }
             }
 
             this.UpdateView();
