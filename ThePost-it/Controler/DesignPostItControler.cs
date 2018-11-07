@@ -70,9 +70,13 @@ namespace ThePost_it
                 if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
                 {
                     model.UnselectAll();
+                    this.postIt.SetSelect(true);
+                }
+                else
+                {
+                    this.postIt.SetSelect(!this.postIt.IsSelected());
                 }
 
-                this.postIt.SetSelect(true);
                 this.model.PopUpPostIt(this.postIt);
             }
 
