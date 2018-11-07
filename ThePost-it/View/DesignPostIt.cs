@@ -24,6 +24,7 @@ namespace ThePost_it
             this.InitializeComponent();
             this.Controls.Add(tb);
             this.Display(p);
+            this.Enabled = true;
         }
 
 
@@ -80,7 +81,7 @@ namespace ThePost_it
 
         public void LockFocus()
         {
-            this.Enabled = false;
+           // this.Enabled = false;
         }
 
         public void UnLockFocus()
