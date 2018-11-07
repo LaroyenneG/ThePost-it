@@ -41,7 +41,6 @@ namespace ThePost_it
             this.SetColor(DEFAULT_COLOR);
             this.tb.Multiline = true;
             this.tb.Location = new Point(MARGIN_SIZE, MARGIN_SIZE);
-            this.LockFocus();
         }
 
         public void Display(PostIt postIt)
@@ -77,16 +76,6 @@ namespace ThePost_it
         public void Deseleted()
         {
             this.BackColor = DEFAULT_COLOR;
-        }
-
-        public void LockFocus()
-        {
-           // this.Enabled = false;
-        }
-
-        public void UnLockFocus()
-        {
-            this.Enabled = true;
         }
 
         public void SetControler(AbstractControler controler)

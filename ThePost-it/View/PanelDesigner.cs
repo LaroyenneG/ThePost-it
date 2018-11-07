@@ -12,22 +12,6 @@ namespace ThePost_it
         {
         }
 
-        public void LockPostIt()
-        {
-            foreach (DesignPostIt d in GetDesignPostItList())
-            {
-                d.LockFocus();
-            }
-        }
-
-        public void UnLockPostIt()
-        {
-            foreach (DesignPostIt d in GetDesignPostItList())
-            {
-                d.UnLockFocus();
-            }
-        }
-
         public void RemoveAll(List<DesignPostIt> list)
         {
             foreach (DesignPostIt d in list)

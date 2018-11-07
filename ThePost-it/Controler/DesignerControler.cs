@@ -21,12 +21,10 @@ namespace ThePost_it
             if (e.Button == MouseButtons.Left && view.PostItButtonIsChecked())
             {
                 this.MememtoSaveModel();
-                this.panelDesigner.LockPostIt();
                 this.model.CreateNewPostit(e.X, e.Y);
             }
             else if (view.CursorButtonIsChecked())
             {
-                this.panelDesigner.UnLockPostIt();
                 this.model.UnselectAll();
             }
          

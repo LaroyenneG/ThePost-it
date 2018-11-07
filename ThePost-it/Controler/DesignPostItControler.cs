@@ -64,6 +64,7 @@ namespace ThePost_it
 
         public override void ActionMouseDown(Object sender, MouseEventArgs e)
         {
+
             if (e.Button == MouseButtons.Left)
             {
                 if ((Control.ModifierKeys & Keys.Shift) != Keys.Shift)
@@ -72,7 +73,7 @@ namespace ThePost_it
                 }
 
                 this.postIt.SetSelect(true);
-                model.PopUpPostIt(this.postIt);
+                this.model.PopUpPostIt(this.postIt);
             }
 
             this.UpdateView();

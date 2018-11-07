@@ -68,6 +68,8 @@ namespace ThePost_it
 
         protected void RestoreModel()
         {
+            this.panelDesigner.Clear();
+
             if (history.CanRedo)
             {
                 history.Redo();
@@ -76,6 +78,8 @@ namespace ThePost_it
 
         protected void CancelModel()
         {
+            this.panelDesigner.Clear();
+
             if (history.CanUndo)
             {
                 history.Undo();
