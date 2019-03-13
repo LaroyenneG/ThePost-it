@@ -55,7 +55,7 @@
     <Compile Include="Controler\MenuControler.cs" />
     <Compile Include="Memento\UndoRedoHistory.cs" />
     <Compile Include="Model\Model.cs" />
-    <Compile Include="Model\Postit.cs" />
+    <Compile Include="Model\PostIt.cs" />
     <Compile Include="View\DesignPostIt.cs">
       <SubType>Component</SubType>
     </Compile>
