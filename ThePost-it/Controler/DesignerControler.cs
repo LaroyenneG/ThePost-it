@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace ThePost_it
 {
@@ -13,22 +8,22 @@ namespace ThePost_it
 
         public DesignerControler(Model model, PostitEditor view) : base(model, view)
         {
-            this.panelDesigner = view.GetPanelDesigner();
+            panelDesigner = view.GetPanelDesigner();
         }
 
-        public override void ActionMouseClick(Object sender, MouseEventArgs e)
+        public override void ActionMouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && view.PostItButtonIsChecked())
             {
-                this.MememtoSaveModel();
-                this.model.CreateNewPostit(e.X, e.Y);
+                MememtoSaveModel();
+                model.CreateNewPostit(e.X, e.Y);
             }
             else if (view.CursorButtonIsChecked())
             {
-                this.model.UnselectAll();
+                model.UnselectAll();
             }
-         
-            this.UpdateView();
+
+            UpdateView();
         }
     }
 }

@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace ThePost_it
 {
     public partial class PostitEditor : Form
     {
-
         public PostitEditor()
         {
             InitializeComponent();
@@ -20,40 +11,40 @@ namespace ThePost_it
 
         public void SetMenuControler(AbstractControler controler)
         {
-            this.quitterToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
-            this.supprimerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
-            this.annulerToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
-            this.retablirToolStripMenuItem.Click += new EventHandler(controler.ActionEvent);
+            quitterToolStripMenuItem.Click += controler.ActionEvent;
+            supprimerToolStripMenuItem.Click += controler.ActionEvent;
+            annulerToolStripMenuItem.Click += controler.ActionEvent;
+            retablirToolStripMenuItem.Click += controler.ActionEvent;
         }
 
         public void SetDesignerControler(AbstractControler controler)
         {
-            this.panelDesigner.SetControler(controler);
+            panelDesigner.SetControler(controler);
         }
 
         public bool CursorButtonIsChecked()
         {
-            return this.cursorButton.Checked;
+            return cursorButton.Checked;
         }
 
         public bool PostItButtonIsChecked()
         {
-            return this.postItButton.Checked;
+            return postItButton.Checked;
         }
 
         public void SetOnePostItIsSelected(bool v)
         {
-            this.supprimerToolStripMenuItem.Enabled = v;
+            supprimerToolStripMenuItem.Enabled = v;
         }
 
         public void SetCanUndo(bool canUndo)
         {
-            this.annulerToolStripMenuItem.Enabled = canUndo;
+            annulerToolStripMenuItem.Enabled = canUndo;
         }
 
         public void SetCanRedo(bool canRedo)
         {
-            this.retablirToolStripMenuItem.Enabled = canRedo;
+            retablirToolStripMenuItem.Enabled = canRedo;
         }
 
         public PanelDesigner GetPanelDesigner()

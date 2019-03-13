@@ -1,41 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ThePost_it
 {
-
     public class PanelDesigner : Panel
     {
-
-        public PanelDesigner()
-        {
-        }
-
         public void RemoveAll(List<DesignPostIt> list)
         {
-            foreach (DesignPostIt d in list)
-            {
-                this.Remove(d);
-            }
+            foreach (var d in list) Remove(d);
         }
 
         public void Clear()
         {
-            this.Controls.Clear();
+            Controls.Clear();
         }
 
         public void Remove(DesignPostIt d)
         {
-            this.Controls.Remove(d);
+            Controls.Remove(d);
         }
 
         public DesignPostIt CreateNewPostItDesigner(PostIt p, AbstractControler controler)
         {
-            DesignPostIt design = new DesignPostIt(p);
+            var design = new DesignPostIt(p);
 
-            this.Controls.Add(design);
-            this.Controls.SetChildIndex(design, 0);
+            Controls.Add(design);
+            Controls.SetChildIndex(design, 0);
 
             design.SetControler(controler);
 
@@ -44,17 +34,14 @@ namespace ThePost_it
 
         public void SetControler(AbstractControler controler)
         {
-            this.MouseClick += new MouseEventHandler(controler.ActionMouseClick);
+            MouseClick += controler.ActionMouseClick;
         }
 
         public List<DesignPostIt> GetDesignPostItList()
         {
-            List<DesignPostIt> listDesign = new List<DesignPostIt>();
+            var listDesign = new List<DesignPostIt>();
 
-            foreach (Control c in this.Controls)
-            {
-                listDesign.Add((DesignPostIt)c);
-            }
+            foreach (Control c in Controls) listDesign.Add((DesignPostIt) c);
 
             return listDesign;
         }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class UndoRedoHistory
 {
-    Stack<IMemento> undoStack;
-    Stack<IMemento> redoStack;
-    bool inUndoRedo;
+    private readonly Stack<IMemento> redoStack;
+    private readonly Stack<IMemento> undoStack;
+    private bool inUndoRedo;
 
     public UndoRedoHistory()
     {
@@ -16,26 +13,14 @@ public class UndoRedoHistory
         redoStack = new Stack<IMemento>();
     }
 
-    public bool CanUndo
-    {
-        get
-        {
-            return undoStack.Count > 0;
-        }
-    }
+    public bool CanUndo => undoStack.Count > 0;
 
-    public bool CanRedo
-    {
-        get
-        {
-            return redoStack.Count > 0;
-        }
-    }
+    public bool CanRedo => redoStack.Count > 0;
 
     public void Undo()
     {
         inUndoRedo = true;
-        IMemento top = undoStack.Pop();
+        var top = undoStack.Pop();
         redoStack.Push(top.Restore());
         inUndoRedo = false;
     }
@@ -43,7 +28,7 @@ public class UndoRedoHistory
     public void Redo()
     {
         inUndoRedo = true;
-        IMemento top = redoStack.Pop();
+        var top = redoStack.Pop();
         undoStack.Push(top.Restore());
         inUndoRedo = false;
     }
@@ -61,4 +46,3 @@ public class UndoRedoHistory
         undoStack.Push(m);
     }
 }
-

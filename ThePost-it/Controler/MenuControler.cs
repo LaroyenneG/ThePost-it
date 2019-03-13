@@ -1,43 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ThePost_it
 {
-
-    class MenuControler : AbstractControler
+    internal class MenuControler : AbstractControler
     {
-
         public MenuControler(Model model, PostitEditor view) : base(model, view)
         {
         }
 
         public override void ActionEvent(object sender, EventArgs e)
         {
-
             if (sender.GetType() == typeof(ToolStripMenuItem))
             {
-                ToolStripMenuItem item = (ToolStripMenuItem)sender;
+                var item = (ToolStripMenuItem) sender;
 
                 switch (item.Name)
                 {
                     case Constant.NAME_ITEM_QUITTER:
-                        this.QuitterToolStripMenuItem_Click(sender, e);
+                        QuitterToolStripMenuItem_Click(sender, e);
                         break;
 
                     case Constant.NAME_ITEM_SUPPRIMER:
-                        this.SupprimerToolStripMenuItem_Click(sender, e);
+                        SupprimerToolStripMenuItem_Click(sender, e);
                         break;
 
                     case Constant.NAME_ITEM_ANNULER:
-                        this.AnnulerToolStripMenuItem_Click(sender, e);
+                        AnnulerToolStripMenuItem_Click(sender, e);
                         break;
 
                     case Constant.NAME_ITEM_RETABLIR:
-                        this.RetablirToolStripMenuItem_Click(sender, e);
+                        RetablirToolStripMenuItem_Click(sender, e);
                         break;
 
                     default:
@@ -46,18 +39,18 @@ namespace ThePost_it
                 }
             }
 
-            this.UpdateView();
+            UpdateView();
         }
 
 
         private void AnnulerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.CancelModel();
+            CancelModel();
         }
 
         private void RetablirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.RestoreModel();
+            RestoreModel();
         }
 
         private void QuitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,10 +60,10 @@ namespace ThePost_it
 
         private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.model.OnePostItIsSelected())
+            if (model.OnePostItIsSelected())
             {
-                this.MememtoSaveModel();
-                this.model.DeleteSelectedPostIts();
+                MememtoSaveModel();
+                model.DeleteSelectedPostIts();
             }
         }
     }

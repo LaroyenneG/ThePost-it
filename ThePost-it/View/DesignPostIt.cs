@@ -1,99 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace ThePost_it
 {
     public class DesignPostIt : Panel
     {
-        private int idModel;
+        private const int MARGIN_SIZE = 15;
+        private static readonly Color DEFAULT_COLOR = Color.Yellow;
+        private static readonly Size POST_SIZE = new Size(300, 300);
+        private readonly int idModel;
 
         private TextBox tb;
 
-        private const int MARGIN_SIZE = 15;
-        private static Color DEFAULT_COLOR = Color.Yellow;
-        private static Size POST_SIZE = new Size(300, 300);
-
         public DesignPostIt(PostIt p)
         {
-            this.idModel = p.GetID();
-            this.InitializeComponent();
-            this.Controls.Add(tb);
-            this.Display(p);
-            this.Enabled = true;
+            idModel = p.GetID();
+            InitializeComponent();
+            Controls.Add(tb);
+            Display(p);
+            Enabled = true;
         }
 
 
         private void InitializeComponent()
         {
-            this.Size = POST_SIZE;
-            this.MaximumSize = POST_SIZE;
-            this.MaximumSize = POST_SIZE;
-            this.MinimumSize = POST_SIZE;
-            this.tb = new TextBox();
-            this.tb.Size = new Size(POST_SIZE.Width - MARGIN_SIZE * 2, POST_SIZE.Height - MARGIN_SIZE * 2);
-            this.tb.BorderStyle = BorderStyle.None;
-            this.BorderStyle = BorderStyle.None;
-            this.SetColor(DEFAULT_COLOR);
-            this.tb.Multiline = true;
-            this.tb.Location = new Point(MARGIN_SIZE, MARGIN_SIZE);
+            Size = POST_SIZE;
+            MaximumSize = POST_SIZE;
+            MaximumSize = POST_SIZE;
+            MinimumSize = POST_SIZE;
+            tb = new TextBox();
+            tb.Size = new Size(POST_SIZE.Width - MARGIN_SIZE * 2, POST_SIZE.Height - MARGIN_SIZE * 2);
+            tb.BorderStyle = BorderStyle.None;
+            BorderStyle = BorderStyle.None;
+            SetColor(DEFAULT_COLOR);
+            tb.Multiline = true;
+            tb.Location = new Point(MARGIN_SIZE, MARGIN_SIZE);
         }
 
         public void Display(PostIt postIt)
         {
-            if (postIt.GetText() != this.tb.Text)
-            {
-                this.tb.Text = postIt.GetText();
-            }
+            if (postIt.GetText() != tb.Text) tb.Text = postIt.GetText();
 
-            this.Location = new Point(postIt.GetX(), postIt.GetY());
+            Location = new Point(postIt.GetX(), postIt.GetY());
 
             if (postIt.IsSelected())
-            {
-                this.Selected();
-            }
+                Selected();
             else
-            {
-                this.Deseleted();
-            }
+                Deseleted();
         }
 
         private void SetColor(Color color)
         {
-            this.BackColor = color;
-            this.tb.BackColor = color;
+            BackColor = color;
+            tb.BackColor = color;
         }
 
         public void Selected()
         {
-            this.BackColor = Color.Gold;
+            BackColor = Color.Gold;
         }
 
         public void Deseleted()
         {
-            this.BackColor = DEFAULT_COLOR;
+            BackColor = DEFAULT_COLOR;
         }
 
         public void SetControler(AbstractControler controler)
         {
-            this.tb.TextChanged += new EventHandler(controler.ActionEvent);
-            this.MouseDown += new MouseEventHandler(controler.ActionMouseDown);
-            this.MouseUp += new MouseEventHandler(controler.ActionMouseUp);
-            this.MouseMove += new MouseEventHandler(controler.ActionMouseMove);
+            tb.TextChanged += controler.ActionEvent;
+            MouseDown += controler.ActionMouseDown;
+            MouseUp += controler.ActionMouseUp;
+            MouseMove += controler.ActionMouseMove;
         }
 
         public bool Correspond(PostIt p)
         {
-            return p.GetID() == this.idModel;
+            return p.GetID() == idModel;
         }
 
         public int GetID()
         {
-            return this.idModel;
+            return idModel;
         }
     }
 }
